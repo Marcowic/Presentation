@@ -1,0 +1,123 @@
+:root {
+  --bg: #0a0e1a;
+  --surface: #131826;
+  --accent-1: #6366f1;
+  --accent-2: #a855f7;
+  --accent-cyan: #22d3ee;
+  --text-primary: #e8eaf0;
+  --text-muted: #8b93a7;
+
+  --font-heading: 'Space Grotesk', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+html, body {
+  background: var(--bg);
+}
+
+#bg-canvas {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+.reveal {
+  position: relative;
+  z-index: 1;
+  font-family: var(--font-body);
+  color: var(--text-primary);
+}
+
+.reveal .slides section {
+  background: transparent;
+  text-align: left;
+}
+
+.reveal h1, .reveal h2, .reveal h3 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  background: linear-gradient(90deg, var(--accent-1), var(--accent-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-transform: none;
+  letter-spacing: -0.01em;
+}
+
+.reveal .eyebrow {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.5em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent-cyan);
+  margin-bottom: 0.5em;
+}
+
+.reveal .subtitle {
+  font-family: var(--font-body);
+  color: var(--text-muted);
+  font-size: 0.6em;
+}
+
+.reveal p, .reveal li {
+  font-family: var(--font-body);
+  color: var(--text-primary);
+  line-height: 1.5;
+}
+
+.reveal blockquote,
+.reveal pre,
+.reveal code {
+  font-family: var(--font-mono);
+  background: var(--surface);
+  border-left: 3px solid var(--accent-cyan);
+  color: var(--text-primary);
+  box-shadow: none;
+}
+
+.reveal blockquote {
+  padding: 0.8em 1em;
+  font-style: normal;
+  width: 100%;
+}
+
+/* Attendance badges */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  font-family: var(--font-mono);
+  font-size: 0.45em;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 0.3em 0.8em;
+  border-radius: 999px;
+}
+
+.badge-live {
+  background: rgba(99, 102, 241, 0.15);
+  border: 1px solid var(--accent-1);
+  color: #c4c6ff;
+}
+
+.badge-async {
+  background: transparent;
+  border: 1px solid var(--accent-cyan);
+  color: var(--accent-cyan);
+}
+
+/* Fragment fade-up (used for staggered bullet reveals) */
+.reveal .fragment.fade-up {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.5s ease;
+}
+
+.reveal .fragment.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
