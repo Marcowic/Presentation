@@ -1,74 +1,158 @@
 ---
 title: Visual Theme
-status: proposed — awaiting sign-off
+status: direction confirmed — Summit Arc; palette/type details still being refined
 ---
 
 # Visual Theme
 
-Brief: "AI-centric but not too busy," smooth animation/transitions unconditional,
-tech-focused audience (AI Coding Summit).
+Brief: "AI-centric but not too busy" has evolved into something more specific — a
+**mountain summit narrative** that mirrors the trip itself (arrival → climb →
+obscured middle → clearing → arrival at the top). Discovered through several rounds
+of mockup exploration (see change log) after the original dark-navy/indigo-violet
+direction tested as too close to a generic "AI product" look.
 
-## Palette (proposed)
+## Core idea: the Summit Arc
 
-Dark-mode base — reads as "developer tool" not "corporate slide deck."
+The deck's palette is not fixed — it progresses across five stages as the audience
+moves through the trip report, using one consistent visual system (same mountain
+silhouette, same sun/moon motif) with only color, light, and atmosphere changing.
+The color arc *is* the storytelling device, not decoration on top of it.
 
-| Role | Color | Notes |
-|---|---|---|
-| Background | `#0a0e1a` (near-black navy) | Not pure black — has depth |
-| Surface / card | `#131826` | Slightly lifted panels for quotes/code blocks |
-| Primary accent | `#6366f1` → `#a855f7` gradient (indigo → violet) | Used sparingly: headings, active state, key numbers |
-| Secondary accent | `#22d3ee` (cyan) | Contrast pop for highlights, links, small tags |
-| Text primary | `#e8eaf0` | Off-white, not stark |
-| Text muted | `#8b93a7` | Captions, metadata, speaker/date labels |
+| Stage | Beat | Palette register | Sun/moon state | Notes |
+|---|---|---|---|---|
+| 1. Night | Arrival | Deep purple-black, faint stars, pale moon | Moon, high, cool white glow | Quietest stage — title/cold-open territory |
+| 2. Morning Rise | Rising momentum | Indigo fading to dusty rose/coral | Sun breaking at horizon | Transition stage, allowed to feel in-between |
+| 3. Foggy Interception | Dense/technical middle | Muted sage-gray, blurred fog bands, desaturated | Sun diffused, no hard edge | Deliberately the hardest-to-read stage — visually mirrors "in the weeds" content. Text must stay high-contrast even as the scene desaturates |
+| 4. The Calm | Synthesis / connective tissue | Clear alpine green-blue | Sun soft and steady, mountain fully defined again | The "made it through the fog" payoff — best for slides needing careful reading |
+| 5. Summit (Sunrise) | Closing | Warm terracotta-to-gold | Sun high and bright, mountain lit and solid | Earth tones reserved *only* for this stage so the finale reads as earned, not reused |
 
-Avoids the cliché "purple/pink AI gradient on everything" — gradient is reserved for
-accents (headings, dividers, key stat callouts), not backgrounds or large fills.
+Color families are intentional, not arbitrary variety:
+- **Purples** — night/pre-dawn only (stages 1–2), never reused later.
+- **Greens** — the fog/calm middle only (stages 3–4).
+- **Earth tones (terracotta/gold)** — reserved entirely for the stage 5 finale.
+
+Full mockup reference (5 stages, one shared shape system): see conversation history
+— to be re-published as a static reference image/palette sheet once locked, since
+the live artifact link is ephemeral.
+
+### Open question — what triggers a stage boundary?
+Two options, not yet decided:
+1. **Even split** — talk count divided into fifths. Simple, mechanical, easy to
+   maintain as talks get added.
+2. **Content beats** — arrival / momentum / dense-middle / synthesis / closing,
+   assigned by actual narrative judgment per talk. More upkeep, reads far more
+   intentional. **Leaning this direction** but pending enough real talk content to
+   test it — see [[storytelling]].
+
+## Shared shape system (keeps all 5 stages reading as one arc, not five decks)
+
+- **Mountain silhouette**: one fixed SVG ridge shape reused across every stage —
+  only its fill color and opacity change.
+- **Sun/moon motif**: a single circular "orb" element whose position, size, glow,
+  and diffusion evolve stage to stage (high pale moon → low breaking sun → diffused
+  fog-glow → soft steady sun → full bright sun).
+- **Content block placement**: eyebrow / title / subtitle / badge / quote stay in
+  consistent positions across stages — only the mountain/sky background and ink
+  color shift.
+
+## Compositional elements shortlisted from earlier exploration rounds
+
+Before landing on the Summit Arc, two structural (non-palette) ideas were
+shortlisted from a "sleek/nerdy" exploration round:
+- **Diff/Changelog** — content hangs off a code-diff-style line-number gutter.
+- **Progress Rail** — a persistent tick-mark rail showing position in the talk
+  sequence.
+
+**Open item**: neither has been tested against the Summit Arc's mountain/sky visual
+system yet — they may not fit tonally (diff/gutter reads as dev-tool-technical,
+which is a different register than the mountain narrative) or Progress Rail's
+wayfinding idea may fold directly into the Summit Arc's own stage progression
+instead of needing a separate rail element. Revisit once more talk content exists.
+
+## Readability: two-tier slide treatment (locked)
+
+Full atmospheric Summit Arc art (gradients, fog bands, mountain silhouette, orb) is
+gorgeous but was fighting body text for the same pixels — most acutely on Stage 3
+(Foggy Interception), which was *deliberately* designed as the lowest-contrast stage.
+Resolved by splitting every stage into two treatments, confirmed via mockup
+(Foggy Interception, splash vs. content):
+
+- **Splash / divider slides** — title, stage transitions, section dividers. Full-bleed
+  art exactly as designed per stage (mountain, orb, fog bands, gradient). Text stays
+  sparse (eyebrow/title/subtitle/badge), so contrast is easy to guarantee.
+- **Content slides** — talk recaps, takeaways, quote lists, anything with real reading
+  weight. The stage's gradient/fog/orb collapses to a thin identity band (~6px) in that
+  stage's two hues, and body content sits on a near-solid panel color pulled from the
+  same stage's palette (not the raw gradient). Stage identity still reads at a glance
+  (band color, stage label, accent) — it's just no longer literally fogging the words.
+
+Rejected alternative: a foreground modal/frosted panel over full art. On a content-heavy
+slide the panel would end up covering most of the artwork anyway, so it pays the
+rendering cost of a scene nobody sees while still looking like a patch.
+
+**Guardrail rule going forward**: content slides never sit directly on a stage's raw
+gradient or fog layer — only on a flat panel color derived from that stage's palette.
+This is the check to apply as real talk content gets slotted in, so per-slide contrast
+doesn't regress as talks are added.
 
 ## Typography
 
-- **Headings**: a clean geometric sans (e.g. *Space Grotesk* or *Sora* via Google Fonts) —
-  slightly technical feel without being a full monospace.
-- **Body**: *Inter* — high legibility at presentation distance.
-- **Code / quotes / raw excerpts**: *JetBrains Mono* — reinforces "this is a real quote
-  from a technical talk," visually distinct from your own commentary.
+Not yet finalized against the Summit Arc — earlier proposal (Space Grotesk /
+Inter / JetBrains Mono) was written for the old dev-tool direction and needs
+re-evaluation now that the visual register is landscape/narrative rather than
+terminal/code. Mockups so far have used serif (Georgia-class) for warmer stages
+and cleaner sans for cooler stages as a placeholder — not locked.
 
 ## Motion principles
 
-- Reveal.js transition: **slide** as the default (directional, reads as "moving through
-  a journey" — fits the London trip narrative), with **fade** used for
-  section-break/mood slides.
-- Fragment reveals: bullets and quote call-outs fade+rise in (`fade-up`), staggered —
-  avoids the "everything appears at once" static feel.
-- Background: a very sparse, slow-drifting particle/node canvas (looks like a faint
-  neural net / constellation) at low opacity behind content — present but never
-  competing with text. Toggle-able off per-slide if it's distracting during a
-  text-heavy talk recap.
-- No motion for motion's sake on data/quotes — animation should support reading order,
-  not decorate.
+- Reveal.js transition: **slide** as default, **fade** for section-break/mood
+  slides — unchanged from original proposal.
+- Fragment reveals: `fade-up`, staggered — unchanged.
+- Stage transitions (as the deck moves from one arc stage to the next) are a
+  natural place for a slower/more deliberate transition treatment — not yet
+  designed, flagged for follow-up.
+- No motion for motion's sake on data/quotes.
 
-## Layout patterns (to reuse across talks)
+## In-person vs async badge
 
-Once you start feeding me talks, each will likely use a small set of repeatable slide
-templates so the deck feels systematic rather than bespoke-per-slide:
+Still open, per constitution — exact icon/wording TBD. Mockups have used a plain
+pill badge ("Live in London" / "Watched Async") styled per-stage; final visual
+treatment not locked.
 
-1. **Talk title/divider** — speaker, talk name, in-person vs. remote/async badge,
-   session time if known.
-2. **Gist slide** — your one-paragraph plain-English summary, large type.
-3. **Key takeaways** — fragment-revealed bullet list (2–4 points).
-4. **Raw excerpt / quote slide** — monospace, attributed, styled like a terminal or
-   quote block.
-5. **Synthesis/connection slide** (optional, used between talks) — how this talk
-   connects to others / to the bigger theme.
-
-## In-person vs. async badge
-
-Small visual tag system to mark which talks you attended live vs. caught later:
-- 🟢 "Live in London" — solid accent pill
-- 🔵 "Watched async" — outline pill
-(exact icon/wording TBD — open to your preference, could drop emoji entirely for a
-more polished text+color-only tag)
+## Change log
+- 2026-07-22 — Initial proposal: dark navy base, indigo→violet gradient accent,
+  cyan secondary, particle/constellation background.
+- 2026-07-24 — User feedback: original direction "looks the same" as generic
+  AI-product/vibe-coded aesthetics (purple-gradient-on-dark is one of the most
+  common defaults right now). Began structural exploration rounds (terminal,
+  journal, diff, editorial, reticle, layered windows, progress rail, callouts,
+  ledger, ticker) — shortlisted **Diff/Changelog** and **Progress Rail**.
+- 2026-07-24 — Explored literal "summit" interpretations (ascent profile,
+  diplomatic table, expedition map, broadcast, above-the-clouds) — ascent/climb
+  concept resonated but execution (line chart) didn't; iterated (ridge
+  silhouette, vertical route, altimeter gauge) — still not right.
+- 2026-07-24 — Pivoted to warm/soft/pastel sunrise-over-mountain palette
+  exploration (Desert Dawn, Alpine Blush, Terracotta & Sage, Golden Hour
+  Minimal) — direction liked, but user wanted more color range (not全 earthy)
+  and a stronger tie to the "summit" feeling specifically for a finale moment.
+- 2026-07-24 — **Landed on the Summit Arc**: a 5-stage narrative color
+  progression (Night → Morning Rise → Foggy Interception → The Calm → Summit/
+  Sunrise) sharing one consistent mountain-and-orb shape system, using purple/
+  green/earth-tone families each tied to a specific narrative register rather
+  than picked freely. Confirmed as the direction going forward.
+- 2026-07-26 — **Locked the two-tier readability split**: full atmospheric art
+  reserved for splash/divider slides; content slides use a flattened identity
+  band + solid stage-derived panel so body text never sits directly on a
+  gradient or fog layer. Rejected a foreground modal approach as visually
+  redundant on content-heavy slides. Confirmed via Foggy Interception mockup.
 
 ## Open items
-- [ ] Approve palette / typography direction
-- [ ] Decide on particle background: yes/no, and how subtle
-- [ ] Confirm in-person/async badge style
+- [ ] Decide stage-boundary trigger: even split vs. content-beat judgment
+- [ ] Re-evaluate Diff/Changelog and Progress Rail against the Summit Arc, or
+      retire them in favor of the arc's own built-in progression
+- [ ] Finalize typography pairing per stage (currently placeholder serif/sans)
+- [ ] Design stage-to-stage transition treatment
+- [ ] Finalize in-person/async badge visual style
+- [ ] Lock exact hex values per stage, and per-stage content-panel colors,
+      audited for contrast/accessibility (splash vs. content treatment now
+      locked in structure — exact hex still mockup-stage)

@@ -40,6 +40,14 @@ Leaning toward **thematic clustering over chronological order** — chronology (
 talk 2, ...) rarely makes for a compelling narrative on its own. Once ~3-4 talks are
 in, I'll propose theme clusters and confirm with you before locking slide order.
 
+This now also has to interact with the **Summit Arc** (see [[visual-theme]]) — the
+deck's 5-stage visual/color progression (Night → Morning Rise → Foggy Interception →
+The Calm → Summit/Sunrise), which is itself a narrative structure mirroring the trip's
+arc (arrival → momentum → dense/technical middle → synthesis → close). Whatever theme
+clusters emerge need to map onto those 5 stages — still open whether that mapping is a
+mechanical even split by talk count or a judgment call based on each cluster's actual
+narrative weight (leaning the latter). Decide once real theme clusters exist.
+
 ## Pacing
 
 No slide-count ceiling — user paces live, prune later if needed. Default to *more

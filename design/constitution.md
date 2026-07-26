@@ -24,8 +24,9 @@ storytelling and visual presentation.
    navigation and reveal should feel fluid, not abrupt.
 3. **No slide-count ceiling.** Never prune or compress content to "fit a deck size."
    User paces live and will explicitly say if/when something should be cut.
-4. **Visual theme is AI-centric but restrained.** Tech/AI-flavored (dark UI, subtle
-   network/circuit motifs, monospace accents) — must not tip into busy, gimmicky, or
+4. **Visual theme is restrained, not gimmicky.** Current direction is the Summit
+   Arc (see [[visual-theme]]) — a narrative mountain/sunrise motif tied to the trip
+   itself, not a literal tech/circuit aesthetic. Must not tip into busy, gimmicky, or
    cliché "AI slop" aesthetics (no default purple-gradient-everything, no stock
    robot/brain imagery).
 5. **Static site, no build step required to run it.** Editing content should mean
@@ -68,13 +69,23 @@ Each talk gets logged in `design/content-log.md` and a source file under `conten
 
 - Framework: **reveal.js** (CDN-loaded, no npm/build step)
 - Hosting: **GitHub Pages**
-- Typography: Space Grotesk (headings) / Inter (body) / JetBrains Mono (quotes/code)
-- Palette: dark navy base, indigo→violet gradient accent, cyan secondary accent
-- Background motion: sparse drifting node/constellation canvas, low opacity
+- Visual direction: **the Summit Arc** — a 5-stage narrative color progression
+  (Night → Morning Rise → Foggy Interception → The Calm → Summit/Sunrise) that
+  mirrors the trip itself, sharing one consistent mountain-silhouette-and-sun/moon
+  shape system across all five stages. Replaces the original dark-navy/
+  indigo-violet direction, which tested as a generic "AI product" look. Full
+  detail and rationale in [[visual-theme]].
+- Typography and exact per-stage hex values: not yet finalized (see
+  [[visual-theme]] open items).
+- Slide treatment: **two-tier**, locked. Splash/divider slides get full
+  atmospheric Summit Arc art; content slides (talk recaps, takeaways, quotes)
+  use a flattened identity band + solid stage-derived panel so text never sits
+  directly on a gradient/fog layer. See [[visual-theme]].
 
 ## Open decisions
 - [ ] GitHub username/repo name for the Pages URL
-- [ ] Particle background density/speed — pending user feedback on current scaffold
+- [ ] Summit Arc stage-boundary trigger: even talk-count split vs. content-beat
+      judgment (leaning content-beat) — see [[visual-theme]]
 - [ ] Badge style for in-person vs async (emoji vs. text+color only)
 - [ ] Theme clusters for talk grouping — pending enough talk content to see patterns
 
@@ -82,3 +93,10 @@ Each talk gets logged in `design/content-log.md` and a source file under `conten
 - 2026-07-22 — Initial constitution written, consolidating decisions from project kickoff.
 - 2026-07-22 — Added local-preview requirement, always-current README requirement, and
   no-sensitive-info-committed requirement.
+- 2026-07-24 — Visual direction pivoted from dark-navy/indigo-violet to the
+  **Summit Arc** (5-stage narrative color progression) after the original direction
+  tested as a generic/overused "AI product" look. See [[visual-theme]] change log
+  for the full exploration trail.
+- 2026-07-26 — Locked the two-tier splash/content slide treatment to resolve a
+  readability tension with the Summit Arc's atmospheric backgrounds (most acute
+  on Stage 3, Foggy Interception). See [[visual-theme]] for detail.
