@@ -57,3 +57,10 @@ and it keeps live pacing flexible.
 ## Open items
 - [ ] First talk content incoming — will refine arc once we see real material
 - [ ] Decide on theme clusters once 3-4 talks are logged
+- [ ] **Bias toward consolidation, not sprawl** — user flagged (2026-07-26) that
+      overlapping topics/themes/messages across talks should be merged into fewer
+      slides rather than each getting its own. Doesn't contradict the
+      no-slide-count-ceiling rule in [[constitution]] (still no arbitrary cap) —
+      it's about not manufacturing separate slides for ideas that repeat or
+      overlap. Also feeds the "is 5 stages too many" question in
+      [[visual-theme]] — decide both once all talk content docs are in.

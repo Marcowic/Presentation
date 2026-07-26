@@ -147,6 +147,12 @@ treatment not locked.
   redundant on content-heavy slides. Confirmed via Foggy Interception mockup.
 
 ## Open items
+- [ ] **Reconsider whether 5 stages is right at all** (raised 2026-07-26, once
+      content started landing) — user is conscious of overall slide count/length
+      and wants themes/messages consolidated rather than drawn out across too many
+      beats. 5 stages may be more granularity than the actual talk content
+      supports. Decide once all talk content docs are in and theme clusters are
+      visible — see [[storytelling]].
 - [ ] Decide stage-boundary trigger: even split vs. content-beat judgment
 - [ ] Re-evaluate Diff/Changelog and Progress Rail against the Summit Arc, or
       retire them in favor of the arc's own built-in progression

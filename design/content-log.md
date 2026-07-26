@@ -9,7 +9,7 @@ Running index of talks covered. One row per talk, updated as content comes in.
 
 | # | Talk | Speaker | Mode | Status |
 |---|---|---|---|---|
-| — | *(none yet)* | | | |
+| 1 | The Last Software Engineer | Kent C. Dodds | 🔵 Async | Drafted — `content/talk_1_kent_dodd.md` |
 
 Mode: 🟢 In person (London) · 🔵 Async/remote
 
