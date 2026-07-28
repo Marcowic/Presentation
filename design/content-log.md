@@ -10,6 +10,7 @@ Running index of talks covered. One row per talk, updated as content comes in.
 | # | Talk | Speaker | Mode | Status |
 |---|---|---|---|---|
 | 1 | The Last Software Engineer | Kent C. Dodds | 🔵 Async | Drafted — `content/talk_1_kent_dodd.md` |
+| 2 | Skill Design for LLM Agents | Minko Gechev | 🔵 Async | Drafted — `content/talk_2_minko_gechev.md` |
 
 Mode: 🟢 In person (London) · 🔵 Async/remote
 
