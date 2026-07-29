@@ -48,7 +48,6 @@ status: drafted # raw | drafted | in-deck
 - Eval and test skills for best performance and prevent regression.
 - "Skillgrade" app to create tests and evaluate skills in your environment.
 - There is a concept of "Hill-climbing" where a skill goes through a process of automated self and improvement based on evaluation scoring.
--
 
 # Your take
 

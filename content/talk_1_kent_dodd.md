@@ -2,7 +2,7 @@
 talk_id: 01-kent-dodds-last-software-engineer
 title: The Last Software Engineer
 speaker: Kent C. Dodds
-mode: Async
+mode: async
 status: drafted # raw | drafted | in-deck
 ---
 
@@ -11,7 +11,7 @@ status: drafted # raw | drafted | in-deck
 - **Title:** The Last Software Engineer
 - **Speaker:** Kent C. Dodds
 - **Context:** Where we are in terms of agentic driven software engineering
-- **Mode:** Async
+- **Mode:** async
 
 # Your summary
 
