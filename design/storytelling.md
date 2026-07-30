@@ -34,19 +34,31 @@ a running index of what's been covered and what's still pending.
 5. **Close** — so what? Your own takeaway / what you're doing differently now / what
    you're watching next in the space.
 
-## Grouping strategy
+## Grouping strategy — LOCKED (2026-07-30)
 
-Leaning toward **thematic clustering over chronological order** — chronology (talk 1,
-talk 2, ...) rarely makes for a compelling narrative on its own. Once ~3-4 talks are
-in, I'll propose theme clusters and confirm with you before locking slide order.
+All 8 talks are now drafted. Confirmed thematic clustering over chronological order,
+as **4 acts**, each mapped to a Summit Arc stage by content-beat judgment (not an
+even talk-count split):
 
-This now also has to interact with the **Summit Arc** (see [[visual-theme]]) — the
-deck's 5-stage visual/color progression (Night → Morning Rise → Foggy Interception →
-The Calm → Summit/Sunrise), which is itself a narrative structure mirroring the trip's
-arc (arrival → momentum → dense/technical middle → synthesis → close). Whatever theme
-clusters emerge need to map onto those 5 stages — still open whether that mapping is a
-mechanical even split by talk count or a judgment call based on each cluster's actual
-narrative weight (leaning the latter). Decide once real theme clusters exist.
+| Stage | Act | Talks | Notes |
+|---|---|---|---|
+| 1. Night | Cold open | — | The trip itself, no talk content |
+| 2. Morning Rise | Act I — The Judgement Thesis | Talk 1 (Kent Dodds) | Sets the frame the rest of the deck plays against |
+| 3. Foggy Interception | Act II — The Practical Middle | Talk 5 (Korop, model economics) → Talk 2 (Gechev, skills) → Talks 3+4 merged (Sogl + Waardenburg, guardrails/coherence) | Densest, most technical stretch — matches the stage's "in the weeds" design intent |
+| 4. The Calm | Act III — Autonomy at Scale | Talks 6+7 merged (Latsko concept → Leimonis proof-at-scale) | Talk 7 is a case study of Talk 6, not a separate beat |
+| 5. Summit | Act IV — Close | Talk 8 (Sumption) + your own takeaway | Bookends back to Talk 1's judgement thesis |
+
+**Act II internal order (confirmed 2026-07-30):** ordered as a pipeline —
+*choose your model → equip it with skills → guard its output* — rather than
+talk-number order. This also sets up Act III cleanly: loop engineering (6+7) is
+what becomes possible once the guardrails from the end of Act II are trusted.
+
+**Merge treatment (confirmed 2026-07-30):** Talks 3+4 and 6+7 each render as one
+fully merged sequence — a single flowing argument/case-study, with speaker
+attribution inline per point rather than a visible per-talk sub-header. Reason:
+these pairs are making the *same point* from two angles (3+4: deterministic
+guardrails beat prompted trust; 6+7: loop engineering concept then proof at scale),
+so a visible seam would undercut the consolidation.
 
 ## Pacing
 

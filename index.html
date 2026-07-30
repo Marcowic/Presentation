@@ -10,25 +10,23 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="css/theme.css" />
 </head>
 <body>
-  <canvas id="bg-canvas"></canvas>
-
   <div class="reveal">
     <div class="slides">
 
-      <section data-transition="fade">
+      <section class="stage-1 slide-splash" data-transition="fade">
         <span class="eyebrow">London · 2026</span>
         <h1>AI Coding Summit</h1>
         <p class="subtitle">A trip report — in the room, and async</p>
       </section>
 
-      <section>
+      <section class="stage-1 slide-content">
         <h2>Placeholder</h2>
-        <p>Content coming — feed me the first talk whenever ready.</p>
+        <p>Stage/typography system is locked — talk slides coming next.</p>
       </section>
 
     </div>
@@ -50,7 +48,18 @@
       center: false,
       plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
     });
+
+    // Controls/progress bar color tracks the active slide's stage (see
+    // theme.css .reveal .controls / .progress reading --accent), since they
+    // sit outside .slides and don't inherit a stage class from the section.
+    const revealEl = document.querySelector('.reveal');
+    function syncStageClass(slide) {
+      const stageClass = [...slide.classList].find((c) => c.startsWith('stage-'));
+      revealEl.className = revealEl.className.replace(/\bstage-\d+\b/g, '').trim();
+      if (stageClass) revealEl.classList.add(stageClass);
+    }
+    Reveal.on('slidechanged', (event) => syncStageClass(event.currentSlide));
+    Reveal.on('ready', (event) => syncStageClass(event.currentSlide));
   </script>
-  <script src="js/custom.js"></script>
 </body>
 </html>

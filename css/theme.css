@@ -1,34 +1,138 @@
 :root {
-  --bg: #0a0e1a;
-  --surface: #131826;
-  --accent-1: #6366f1;
-  --accent-2: #a855f7;
-  --accent-cyan: #22d3ee;
-  --text-primary: #e8eaf0;
-  --text-muted: #8b93a7;
-
-  --font-heading: 'Space Grotesk', sans-serif;
+  --font-heading: 'Fraunces', serif;
   --font-body: 'Inter', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
 }
 
-html, body {
-  background: var(--bg);
+/* Summit Arc stages — one shared shape/type system, only color/light/atmosphere
+   changes per stage. Each .stage-N class sets the full variable set for both the
+   splash treatment (bg-top/bg-bottom/mountain/orb/accent) and the two-tier content
+   treatment (panel/panel-ink/panel-accent). See design/visual-theme.md. */
+
+.stage-1 {
+  --bg-top: #0B0A14;
+  --bg-bottom: #1A1330;
+  --mountain: #050409;
+  --orb: #F4F1FA;
+  --orb-glow: #8B7FD1;
+  --accent: #A78BFA;
+  --splash-ink: #F5F3FA;
+  --splash-ink-muted: #C9C2E0;
+  --panel: #16112A;
+  --panel-ink: #EDE9F7;
+  --panel-ink-muted: #B7AFD1;
+  --panel-accent: #B9A6F0;
 }
 
-#bg-canvas {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  opacity: 0.35;
-  pointer-events: none;
+.stage-2 {
+  --bg-top: #2A2350;
+  --bg-bottom: #E8927C;
+  --mountain: #241C3D;
+  --orb: #F2A65A;
+  --orb-glow: #F0845A;
+  --accent: #E8927C;
+  --splash-ink: #FFF8F2;
+  --splash-ink-muted: #E3C9C0;
+  --panel: #241D3F;
+  --panel-ink: #F5EFEA;
+  --panel-ink-muted: #C7B9C9;
+  --panel-accent: #E39A72;
+}
+
+.stage-3 {
+  --bg-top: #3E463C;
+  --bg-bottom: #8B917F;
+  --mountain: #4A5248;
+  --orb: #C7C4AD;
+  --orb-glow: #C7C4AD;
+  --accent: #8A9478;
+  --splash-ink: #F1F0E8;
+  --splash-ink-muted: #BFC2B4;
+  --panel: #2B302A;
+  --panel-ink: #EDEEE6;
+  --panel-ink-muted: #A9AE9E;
+  --panel-accent: #A8B396;
+}
+
+.stage-4 {
+  --bg-top: #1E4A47;
+  --bg-bottom: #3E7C74;
+  --mountain: #16332F;
+  --orb: #F5E6C8;
+  --orb-glow: #F5E6C8;
+  --accent: #4FA79B;
+  --splash-ink: #F4FAF7;
+  --splash-ink-muted: #B9D6CE;
+  --panel: #163430;
+  --panel-ink: #E9F5F0;
+  --panel-ink-muted: #9FC7BD;
+  --panel-accent: #6FC2B4;
+}
+
+.stage-5 {
+  --bg-top: #C1512F;
+  --bg-bottom: #F2B84B;
+  --mountain: #7A3B24;
+  --orb: #FFD37A;
+  --orb-glow: #FFD37A;
+  --accent: #F2B84B;
+  --splash-ink: #FFF9EE;
+  --splash-ink-muted: #F0CBAE;
+  --panel: #5A2C1C;
+  --panel-ink: #FBEEE0;
+  --panel-ink-muted: #D9B79E;
+  --panel-accent: #F2B84B;
+}
+
+html, body {
+  background: #0B0A14;
 }
 
 .reveal {
-  position: relative;
-  z-index: 1;
   font-family: var(--font-body);
-  color: var(--text-primary);
+}
+
+/* Controls/progress default to reveal's stock blue (black.css). Retheme to
+   the active stage's accent — .reveal itself gets the current stage class
+   applied via JS on slidechanged (see index.html), since controls/progress
+   sit outside .slides and can't inherit a stage class from the section. */
+.reveal .controls {
+  color: var(--accent, #A78BFA);
+}
+
+.reveal .progress {
+  color: var(--accent, #A78BFA);
+}
+
+/* Splash / divider slides: full-bleed stage gradient, sparse text
+   (eyebrow/title/subtitle/badge only). See visual-theme.md two-tier rule. */
+.reveal .slides section.slide-splash {
+  background: linear-gradient(180deg, var(--bg-top) 0%, var(--bg-bottom) 100%);
+  color: var(--splash-ink);
+  text-align: left;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 6%;
+}
+
+/* Content slides: flattened identity band + solid stage-derived panel so body
+   text never sits directly on a gradient or fog layer. */
+.reveal .slides section.slide-content {
+  background: var(--panel);
+  color: var(--panel-ink);
+  text-align: left;
+  border-top: 6px solid var(--accent);
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 4% 6%;
 }
 
 .reveal .slides section {
@@ -39,12 +143,15 @@ html, body {
 .reveal h1, .reveal h2, .reveal h3 {
   font-family: var(--font-heading);
   font-weight: 600;
-  background: linear-gradient(90deg, var(--accent-1), var(--accent-2));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  text-transform: none;
   letter-spacing: -0.01em;
+}
+
+.slide-splash h1, .slide-splash h2, .slide-splash h3 {
+  color: var(--splash-ink);
+}
+
+.slide-content h1, .slide-content h2, .slide-content h3 {
+  color: var(--panel-ink);
 }
 
 .reveal .eyebrow {
@@ -53,19 +160,32 @@ html, body {
   font-size: 0.5em;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--accent-cyan);
   margin-bottom: 0.5em;
+}
+
+.slide-splash .eyebrow {
+  color: var(--splash-ink-muted);
+}
+
+.slide-content .eyebrow {
+  color: var(--panel-accent);
 }
 
 .reveal .subtitle {
   font-family: var(--font-body);
-  color: var(--text-muted);
   font-size: 0.6em;
+}
+
+.slide-splash .subtitle {
+  color: var(--splash-ink-muted);
+}
+
+.slide-content .subtitle {
+  color: var(--panel-ink-muted);
 }
 
 .reveal p, .reveal li {
   font-family: var(--font-body);
-  color: var(--text-primary);
   line-height: 1.5;
 }
 
@@ -73,10 +193,15 @@ html, body {
 .reveal pre,
 .reveal code {
   font-family: var(--font-mono);
-  background: var(--surface);
-  border-left: 3px solid var(--accent-cyan);
-  color: var(--text-primary);
+  border-left: 3px solid var(--accent);
   box-shadow: none;
+}
+
+.slide-content blockquote,
+.slide-content pre,
+.slide-content code {
+  background: rgba(0, 0, 0, 0.15);
+  color: var(--panel-ink);
 }
 
 .reveal blockquote {
@@ -96,18 +221,16 @@ html, body {
   text-transform: uppercase;
   padding: 0.3em 0.8em;
   border-radius: 999px;
+  border: 1px solid var(--accent);
+  color: var(--accent);
 }
 
 .badge-live {
-  background: rgba(99, 102, 241, 0.15);
-  border: 1px solid var(--accent-1);
-  color: #c4c6ff;
+  background: color-mix(in srgb, var(--accent) 15%, transparent);
 }
 
 .badge-async {
   background: transparent;
-  border: 1px solid var(--accent-cyan);
-  color: var(--accent-cyan);
 }
 
 /* Fragment fade-up (used for staggered bullet reveals) */

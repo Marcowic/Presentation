@@ -84,10 +84,7 @@ Each talk gets logged in `design/content-log.md` and a source file under `conten
 
 ## Open decisions
 - [ ] GitHub username/repo name for the Pages URL
-- [ ] Summit Arc stage-boundary trigger: even talk-count split vs. content-beat
-      judgment (leaning content-beat) — see [[visual-theme]]
 - [ ] Badge style for in-person vs async (emoji vs. text+color only)
-- [ ] Theme clusters for talk grouping — pending enough talk content to see patterns
 
 ## Change log
 - 2026-07-22 — Initial constitution written, consolidating decisions from project kickoff.
@@ -100,3 +97,7 @@ Each talk gets logged in `design/content-log.md` and a source file under `conten
 - 2026-07-26 — Locked the two-tier splash/content slide treatment to resolve a
   readability tension with the Summit Arc's atmospheric backgrounds (most acute
   on Stage 3, Foggy Interception). See [[visual-theme]] for detail.
+- 2026-07-30 — All 8 talks drafted; locked the theme-cluster narrative structure
+  (4 acts mapped to the 5 Summit Arc stages by content-beat judgment) and the
+  fully-merged treatment for the two overlapping talk pairs (3+4, 6+7). See
+  [[storytelling]] and [[visual-theme]] for detail.

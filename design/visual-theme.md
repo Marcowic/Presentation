@@ -31,18 +31,45 @@ Color families are intentional, not arbitrary variety:
 - **Greens** — the fog/calm middle only (stages 3–4).
 - **Earth tones (terracotta/gold)** — reserved entirely for the stage 5 finale.
 
+## Hex values — LOCKED (2026-07-30)
+
+Each stage exposes one set of CSS custom properties (`--bg-top`/`--bg-bottom` for
+the splash gradient, `--mountain`, `--orb`/`--orb-glow`, `--accent`) plus a second
+set for the two-tier content treatment (`--panel`, `--panel-ink`,
+`--panel-ink-muted`, `--panel-accent`). Panel colors are solid pulls from each
+stage's family, not the raw gradient — per the two-tier readability rule.
+
+All content-panel pairs (`--panel` + `--panel-ink`) were sanity-checked for
+contrast and land well above WCAG AA (most are AAA-range, dark panel + near-white
+ink) since content slides carry the reading weight and can't rely on the splash
+stage's atmosphere to do any work.
+
+| Stage | bg-top → bg-bottom | mountain | orb / orb-glow | accent | panel | panel-ink | panel-accent |
+|---|---|---|---|---|---|---|---|
+| 1. Night | `#0B0A14` → `#1A1330` | `#050409` | `#F4F1FA` / `#8B7FD1` | `#A78BFA` | `#16112A` | `#EDE9F7` | `#B9A6F0` |
+| 2. Morning Rise | `#2A2350` → `#E8927C` | `#241C3D` | `#F2A65A` / `#F0845A` | `#E8927C` | `#241D3F` | `#F5EFEA` | `#E39A72` |
+| 3. Foggy Interception | `#3E463C` → `#8B917F` | `#4A5248` | `#C7C4AD` / `#C7C4AD` (wide blur, no glow color shift) | `#8A9478` | `#2B302A` | `#EDEEE6` | `#A8B396` |
+| 4. The Calm | `#1E4A47` → `#3E7C74` | `#16332F` | `#F5E6C8` / `#F5E6C8` | `#4FA79B` | `#163430` | `#E9F5F0` | `#6FC2B4` |
+| 5. Summit | `#C1512F` → `#F2B84B` | `#7A3B24` | `#FFD37A` / `#FFD37A` | `#F2B84B` | `#5A2C1C` | `#FBEEE0` | `#F2B84B` |
+
+Splash ink (the near-white text color used on full atmospheric splash slides) also
+locked per stage: Night `#F5F3FA`, Morning Rise `#FFF8F2`, Foggy Interception
+`#F1F0E8`, The Calm `#F4FAF7`, Summit `#FFF9EE` — each with a corresponding muted
+variant (~30-40% desaturated toward the panel color) for eyebrow/subtitle text.
+Implemented as `.stage-1`…`.stage-5` classes in `css/theme.css`.
+
 Full mockup reference (5 stages, one shared shape system): see conversation history
 — to be re-published as a static reference image/palette sheet once locked, since
 the live artifact link is ephemeral.
 
-### Open question — what triggers a stage boundary?
-Two options, not yet decided:
-1. **Even split** — talk count divided into fifths. Simple, mechanical, easy to
-   maintain as talks get added.
-2. **Content beats** — arrival / momentum / dense-middle / synthesis / closing,
-   assigned by actual narrative judgment per talk. More upkeep, reads far more
-   intentional. **Leaning this direction** but pending enough real talk content to
-   test it — see [[storytelling]].
+### Stage boundary trigger — LOCKED (2026-07-30)
+
+**Content beats**, confirmed — not an even talk-count split. All 8 talks are now
+drafted and cluster cleanly into 4 acts (see [[storytelling]] for the full mapping),
+which map onto the 5 stages unevenly by design: Stage 3 (Foggy Interception) alone
+carries 3 talks (2, 3+4 merged, 5) because that's genuinely the densest technical
+stretch; Stage 2 and Stage 5 carry a single talk each because they're framing/closing
+beats, not content dumps.
 
 ## Shared shape system (keeps all 5 stages reading as one arc, not five decks)
 
@@ -95,13 +122,25 @@ gradient or fog layer — only on a flat panel color derived from that stage's p
 This is the check to apply as real talk content gets slotted in, so per-slide contrast
 doesn't regress as talks are added.
 
-## Typography
+## Typography — LOCKED (2026-07-30)
 
-Not yet finalized against the Summit Arc — earlier proposal (Space Grotesk /
-Inter / JetBrains Mono) was written for the old dev-tool direction and needs
-re-evaluation now that the visual register is landscape/narrative rather than
-terminal/code. Mockups so far have used serif (Georgia-class) for warmer stages
-and cleaner sans for cooler stages as a placeholder — not locked.
+One consistent type system across all 5 stages, not a per-stage pairing — same
+reasoning as the shared shape system: only color/light/atmosphere should change
+stage to stage, or the deck starts reading as five decks instead of one arc.
+Replaces the old Space Grotesk/Inter/JetBrains Mono set, which was written for the
+earlier terminal/dev-tool direction and skewed too code-y for a narrative register.
+
+- **Display (h1/h2, eyebrow on splash slides): Fraunces** — a warm, editorial
+  serif with real character (ties to the "trip report" storytelling register)
+  that still reads cleanly at both the cool end (Night, The Calm) and warm end
+  (Summit) of the palette, so it doesn't need swapping per stage.
+- **Body (content slide text, subtitles, bullets): Inter** — kept from the
+  original proposal. Neutral and highly readable, deliberately plain so it
+  doesn't compete with Fraunces's character on splash slides.
+- **Mono (stat callouts, data points, quote attribution): JetBrains Mono** —
+  kept. Still earns its place for the deck's data moments (cost/points chart,
+  percentages, repo counts) even though the broader terminal aesthetic was
+  dropped.
 
 ## Motion principles
 
@@ -145,15 +184,17 @@ treatment not locked.
   band + solid stage-derived panel so body text never sits directly on a
   gradient or fog layer. Rejected a foreground modal approach as visually
   redundant on content-heavy slides. Confirmed via Foggy Interception mockup.
+- 2026-07-30 — **Kept 5 stages, locked content-beat stage boundaries.** All 8
+  talks are drafted and cluster into 4 acts (see [[storytelling]]); mapped
+  unevenly onto the 5 stages by narrative weight rather than talk count —
+  Stage 3 alone carries 3 talks since it's genuinely the densest stretch.
+- 2026-07-30 — **Locked exact hex values per stage** (splash gradient, mountain,
+  orb, accent, plus the two-tier content-panel set) and **locked typography**:
+  one consistent Fraunces/Inter/JetBrains Mono system across all 5 stages rather
+  than per-stage font pairing, dropping the old Space Grotesk dev-tool set.
+  Implemented in `css/theme.css` as `.stage-1`…`.stage-5` classes.
 
 ## Open items
-- [ ] **Reconsider whether 5 stages is right at all** (raised 2026-07-26, once
-      content started landing) — user is conscious of overall slide count/length
-      and wants themes/messages consolidated rather than drawn out across too many
-      beats. 5 stages may be more granularity than the actual talk content
-      supports. Decide once all talk content docs are in and theme clusters are
-      visible — see [[storytelling]].
-- [ ] Decide stage-boundary trigger: even split vs. content-beat judgment
 - [ ] Re-evaluate Diff/Changelog and Progress Rail against the Summit Arc, or
       retire them in favor of the arc's own built-in progression
 - [ ] Finalize typography pairing per stage (currently placeholder serif/sans)
