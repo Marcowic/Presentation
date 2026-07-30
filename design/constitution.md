@@ -88,9 +88,12 @@ Each talk gets logged in `design/content-log.md` and a source file under `conten
   readability from. See [[visual-theme]].
 
 ## Open decisions
-- [ ] GitHub username/repo name for the Pages URL
+None currently open.
 
 ## Change log
+- 2026-07-30 - Confirmed GitHub repo (`Marcowic/Presentation`) and live Pages URL
+  (`https://marcowic.github.io/Presentation/`); resolved the last open decision. See
+  [[tech-stack]].
 - 2026-07-22 - Initial constitution written, consolidating decisions from project kickoff.
 - 2026-07-22 - Added local-preview requirement, always-current README requirement, and
   no-sensitive-info-committed requirement.

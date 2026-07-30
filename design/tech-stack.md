@@ -20,25 +20,30 @@ Why:
 - Zero build step means content changes (new talk summaries) are just editing HTML —
   fast iteration as content gets fed in over multiple sessions.
 
-## Hosting: GitHub Pages
+## Hosting: GitHub Pages — LIVE
 
-- Repo root (or `/docs`) served directly as static site — free, no CI needed initially.
-- URL format: `https://<username>.github.io/<repo-name>/`
-- Deploy = push to `main` (or a `gh-pages` branch, TBD once repo is connected to GitHub).
+- Repo: `Marcowic/Presentation`, served from `main` branch root via GitHub Pages
+  (Settings → Pages → Deploy from a branch → `main` / root).
+- Live URL: **https://marcowic.github.io/Presentation/**
+- Deploy = push to `main`. No CI, no build step — Pages serves the static files as-is.
 
 ## Structure
 
 ```
-index.html          — reveal.js shell, includes all slide sections
-css/theme.css        — custom AI-centric theme (see design/visual-theme.md)
-js/custom.js         — custom background/interaction effects
-content/             — per-talk markdown/HTML fragments (source material, staging)
+index.html          — reveal.js shell, includes all slide sections plus the inline
+                       Reveal.initialize() config and stage-class sync script
+css/theme.css        — Paper & Halo theme, .stage-1…stage-5 accent classes
+                       (see design/visual-theme.md)
+content/             — per-talk source material (source material behind each talk's
+                       slides; talks are hand-authored into index.html, not assembled
+                       via the markdown plugin — see decision below)
 assets/images/       — photos, screenshots, diagrams
 design/              — this directory — decisions & storytelling docs
 ```
 
-## Open items
-- [ ] Confirm GitHub username/repo name for Pages URL
-- [ ] Decide whether talk content lives inline in index.html or gets assembled from
-      `content/*.md` via reveal.js's markdown plugin (leaning: markdown plugin, keeps
-      index.html thin and each talk easy to edit independently)
+## Resolved decisions
+- GitHub username/repo: **Marcowic/Presentation** — Pages URL confirmed above.
+- Talk content lives **inline in index.html** as hand-authored `<section>` markup, not
+  assembled from `content/*.md` via the reveal.js markdown plugin. `content/*.md` files
+  remain the source material staging area per talk (summary + raw excerpts) that gets
+  hand-converted into slides, per [[storytelling]].

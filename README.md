@@ -4,7 +4,8 @@ A stylised, tech-focused presentation recapping talks from an AI Coding Summit �
 covering both sessions attended in person and talks caught up with async — with a
 focus on the ideas, themes, and takeaways from a developer/AI-tooling perspective.
 
-Built as a static [reveal.js](https://revealjs.com/) site, hosted free on GitHub Pages.
+Built as a static [reveal.js](https://revealjs.com/) site, hosted free on GitHub Pages
+at **https://marcowic.github.io/Presentation/**.
 
 ## Running locally
 
@@ -23,10 +24,11 @@ navigate slides.
 ## Project structure
 
 ```
-index.html          reveal.js shell — all slides
-css/theme.css        custom visual theme
-js/custom.js         background animation / custom behaviour
-content/             per-talk source material (staging, not yet in index.html)
+index.html          reveal.js shell — all slides, plus inline Reveal.initialize()
+                     config and stage-class sync script
+css/theme.css        custom Paper & Halo visual theme (5-stage accent system)
+content/             per-talk source material (summary + raw excerpts, one file per
+                     talk — all 8 are now built into index.html)
 assets/images/       photos, screenshots, diagrams
 design/              decision docs — see below
 ```
