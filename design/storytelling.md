@@ -1,6 +1,6 @@
 ---
 title: Storytelling Structure
-status: living document — will evolve as content comes in
+status: locked — all 8 talks drafted, grouping and merge treatment confirmed 2026-07-30
 ---
 
 # Storytelling Structure
@@ -17,7 +17,7 @@ I'll turn each of these into a mini-sequence of slides (see templates in
 [[visual-theme]]) and log it in `design/content-log.md` as we go, so we always have
 a running index of what's been covered and what's still pending.
 
-## Narrative arc (draft — to refine once we see how many talks / what themes emerge)
+## Narrative arc (original framing — superseded by "Grouping strategy — LOCKED" below)
 
 1. **Cold open** — set the scene: AI Coding Summit, London, the trip itself. A hook,
    not a table of contents.
@@ -67,10 +67,5 @@ granular slides* over cramming (one idea per slide) since reveal.js navigation i
 and it keeps live pacing flexible.
 
 ## Open items
-None currently open — all resolved 2026-07-30 once all 8 talks were drafted (see
-"Grouping strategy — LOCKED" above):
-- [x] First talk content incoming — all 8 talks now drafted and in-deck.
-- [x] Theme clusters — locked as the 4-act structure mapped to the 5 Summit Arc
-      stages.
-- [x] **Bias toward consolidation, not sprawl** — applied via the fully-merged
-      treatment for talks 3+4 and 6+7 (see "Merge treatment" above).
+None — resolved 2026-07-30 when all 8 talks were drafted. See "Grouping strategy —
+LOCKED" above.
