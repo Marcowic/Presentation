@@ -65,6 +65,7 @@
 
 html, body {
   background: var(--paper);
+  overflow-x: hidden;
 }
 
 .reveal {
@@ -100,6 +101,7 @@ html, body {
   height: 100%;
   width: 100%;
   box-sizing: border-box;
+  overflow-x: hidden;
   overflow-y: auto;
   padding: 3% 6%;
 }
