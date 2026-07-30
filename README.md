@@ -24,8 +24,9 @@ navigate slides.
 ## Project structure
 
 ```
-index.html          reveal.js shell — all slides, plus inline Reveal.initialize()
-                     config and stage-class sync script
+index.html          reveal.js shell — all slides, a page-wide .page-halo element
+                     (accent glow, pinned above the deck via fixed positioning),
+                     plus inline Reveal.initialize() config and stage-class sync
 css/theme.css        custom Paper & Halo visual theme (5-stage accent system)
 content/             per-talk source material (summary + raw excerpts, one file per
                      talk — all 8 are now built into index.html)

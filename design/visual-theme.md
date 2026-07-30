@@ -79,6 +79,21 @@ graphical marks, not text, where full saturation matters more than legibility.
 
 Implemented as `.stage-1`…`.stage-5` classes in `css/theme.css`.
 
+**Halo implementation note:** the glow is not a per-slide pseudo-element - it's a
+single page-wide `.page-halo` element (`index.html`, appended just before the
+reveal.js scripts), pinned via `position: fixed` + `z-index: 9999` so it always
+paints above every slide regardless of reveal.js's own transform/stacking during
+transitions. This matters because the deck runs at a fixed 4:3 stage ratio
+(reveal.js's default) that reveal.js letterboxes/scales to fit the viewport - see
+[[tech-stack]] for the full letterboxing fix. An element scoped to an individual
+slide section, or a pseudo-element on `.reveal` painted *behind* `.slides`, both
+produced a hard visible seam at the 4:3 stage boundary (glow occluded by each
+section's opaque paper background, or clipped to the stage instead of bleeding
+into the letterboxed gutter). `.page-halo` and `.reveal` both get the current
+slide's `stage-N` + `is-splash`/`is-content` classes synced by the script in
+`index.html` on every slide change, so `--accent` and glow size/opacity still
+track the active stage and slide type.
+
 ### Stage boundary trigger - LOCKED (2026-07-30)
 
 **Content beats**, confirmed - not an even talk-count split. All 8 talks are now
@@ -196,6 +211,21 @@ reason as the eyebrow). `badge-live` gets a faint fill (`--accent` at 18% via
   (darkened variant of each accent) after checking the raw accents land at
   1.4-2.6:1 contrast against the new paper ground - well below readable -
   while the darkened pairs land at 4.8-6.3:1.
+- 2026-07-30 - **Fixed page-level layout issues found in cross-browser and
+  post-deploy testing**: (1) the corner halo could register as horizontal page
+  overflow on some browsers since slide sections only clipped `overflow-y`, not
+  `overflow-x` - fixed by clipping `overflow-x` on sections plus an `html`/`body`
+  backstop; (2) the area outside the scaled 4:3 stage (reveal.js letterboxing)
+  was painting near-black from the base reveal.js theme instead of the paper
+  ground - fixed by overriding `--r-background-color` and `.reveal-viewport`'s
+  background; (3) reveal.js's default stage margin left a visible gap around the
+  stage - fixed with `margin: 0` in `Reveal.initialize()`; (4) the halo glow,
+  after being generalized to cover the full page, showed a hard seam at the
+  stage boundary because per-slide opaque backgrounds occluded a
+  same-DOM-position pseudo-element - fixed by moving the glow to a dedicated
+  `.page-halo` element pinned above everything via fixed positioning and a high
+  z-index, decoupling it entirely from reveal.js's internal stacking. See the
+  halo implementation note above and [[tech-stack]].
 
 ## Open items
 - [ ] Design stage-to-stage transition treatment (still open, now simpler since

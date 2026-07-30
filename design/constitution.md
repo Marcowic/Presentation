@@ -94,6 +94,11 @@ None currently open.
 - 2026-07-30 - Confirmed GitHub repo (`Marcowic/Presentation`) and live Pages URL
   (`https://marcowic.github.io/Presentation/`); resolved the last open decision. See
   [[tech-stack]].
+- 2026-07-30 - Fixed several post-deploy layout bugs found via cross-browser testing:
+  horizontal scroll from the halo glow's intentional edge-spill, the letterboxed area
+  around the 4:3 stage showing the wrong (near-black) background, a stage-fit gap, and
+  a hard seam in the halo glow caused by reveal.js's internal paint order. See
+  [[visual-theme]] and [[tech-stack]] for detail.
 - 2026-07-22 - Initial constitution written, consolidating decisions from project kickoff.
 - 2026-07-22 - Added local-preview requirement, always-current README requirement, and
   no-sensitive-info-committed requirement.
