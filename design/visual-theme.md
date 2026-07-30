@@ -1,205 +1,202 @@
 ---
 title: Visual Theme
-status: direction confirmed — Summit Arc; palette/type details still being refined
+status: direction confirmed - Paper & Halo (pivoted from the atmospheric Summit Arc on 2026-07-30)
 ---
 
 # Visual Theme
 
-Brief: "AI-centric but not too busy" has evolved into something more specific — a
-**mountain summit narrative** that mirrors the trip itself (arrival → climb →
-obscured middle → clearing → arrival at the top). Discovered through several rounds
-of mockup exploration (see change log) after the original dark-navy/indigo-violet
-direction tested as too close to a generic "AI product" look.
+Brief: "AI-centric but not too busy." The deck went through a full atmospheric
+direction (mountain silhouette, sun/moon orb, full-bleed gradient skies - see
+change log) before pivoting on 2026-07-30 to **Paper & Halo**: a minimal, single
+paper ground used on every slide, with only a soft per-stage accent glow and a
+handful of small marks carrying the color story. The user liked the content and
+the 5-stage narrative structure but found the gradient/splash treatment's harsh
+shifts between slides unpleasant - see the pivot entry in the change log for the
+full reasoning and the mockup comparison that led to this.
 
-## Core idea: the Summit Arc
+## Core idea: the Summit Arc (narrative structure - unchanged by the pivot)
 
-The deck's palette is not fixed — it progresses across five stages as the audience
-moves through the trip report, using one consistent visual system (same mountain
-silhouette, same sun/moon motif) with only color, light, and atmosphere changing.
-The color arc *is* the storytelling device, not decoration on top of it.
+The 5-stage narrative progression itself is still the storytelling backbone: the
+deck moves through five color beats as the audience moves through the trip
+report. What changed is the *visual expression* of that progression - no more
+full-bleed atmospheric art, but the same five accent hues, in the same order,
+tied to the same beats.
 
-| Stage | Beat | Palette register | Sun/moon state | Notes |
-|---|---|---|---|---|
-| 1. Night | Arrival | Deep purple-black, faint stars, pale moon | Moon, high, cool white glow | Quietest stage — title/cold-open territory |
-| 2. Morning Rise | Rising momentum | Indigo fading to dusty rose/coral | Sun breaking at horizon | Transition stage, allowed to feel in-between |
-| 3. Foggy Interception | Dense/technical middle | Muted sage-gray, blurred fog bands, desaturated | Sun diffused, no hard edge | Deliberately the hardest-to-read stage — visually mirrors "in the weeds" content. Text must stay high-contrast even as the scene desaturates |
-| 4. The Calm | Synthesis / connective tissue | Clear alpine green-blue | Sun soft and steady, mountain fully defined again | The "made it through the fog" payoff — best for slides needing careful reading |
-| 5. Summit (Sunrise) | Closing | Warm terracotta-to-gold | Sun high and bright, mountain lit and solid | Earth tones reserved *only* for this stage so the finale reads as earned, not reused |
+| Stage | Beat | Accent hue family | Notes |
+|---|---|---|---|
+| 1. Night | Arrival | Violet | Quietest stage - title/cold-open territory |
+| 2. Morning Rise | Rising momentum | Coral/terracotta | Transition stage, allowed to feel in-between |
+| 3. Foggy Interception | Dense/technical middle | Sage | Densest stretch - 3 talks worth of content (see [[storytelling]]) |
+| 4. The Calm | Synthesis / connective tissue | Teal | The "made it through the fog" payoff |
+| 5. Summit (Sunrise) | Closing | Gold/amber | Reserved for the finale so it reads as earned |
 
-Color families are intentional, not arbitrary variety:
-- **Purples** — night/pre-dawn only (stages 1–2), never reused later.
-- **Greens** — the fog/calm middle only (stages 3–4).
-- **Earth tones (terracotta/gold)** — reserved entirely for the stage 5 finale.
+Color families are still intentional, not arbitrary: violet is night-only, greens
+own the fog/calm middle, gold is reserved entirely for the stage 5 finale - same
+rule as before, just expressed through a single accent hue per stage rather than
+a full sky gradient.
 
-## Hex values — LOCKED (2026-07-30)
+## Paper & Halo - LOCKED (2026-07-30)
 
-Each stage exposes one set of CSS custom properties (`--bg-top`/`--bg-bottom` for
-the splash gradient, `--mountain`, `--orb`/`--orb-glow`, `--accent`) plus a second
-set for the two-tier content treatment (`--panel`, `--panel-ink`,
-`--panel-ink-muted`, `--panel-accent`). Panel colors are solid pulls from each
-stage's family, not the raw gradient — per the two-tier readability rule.
+One fixed warm paper ground and dark ink, used identically on **every** slide and
+every stage - no more per-stage background color, no splash-vs-content visual
+split. The only thing that changes stage to stage is a soft radial accent glow
+pooling in one corner (multiply blend, so it reads as color soaked into the paper
+rather than a light source) plus the accent color used on a handful of small
+marks: the eyebrow label, badges, bullet dashes, the divider rule, and stat
+values.
 
-All content-panel pairs (`--panel` + `--panel-ink`) were sanity-checked for
-contrast and land well above WCAG AA (most are AAA-range, dark panel + near-white
-ink) since content slides carry the reading weight and can't rely on the splash
-stage's atmosphere to do any work.
+Chosen over three other minimal directions mocked up and compared side by side
+(Quiet Rule: dark canvas + hairline top rule; Soft Halo: dark canvas + corner
+glow; Paper & Ink: paper ground with no glow) - Paper & Halo combined the paper
+ground the user preferred with the halo's softer, less "graphic" way of carrying
+the stage color than a hard rule.
 
-| Stage | bg-top → bg-bottom | mountain | orb / orb-glow | accent | panel | panel-ink | panel-accent |
-|---|---|---|---|---|---|---|---|
-| 1. Night | `#0B0A14` → `#1A1330` | `#050409` | `#F4F1FA` / `#8B7FD1` | `#A78BFA` | `#16112A` | `#EDE9F7` | `#B9A6F0` |
-| 2. Morning Rise | `#2A2350` → `#E8927C` | `#241C3D` | `#F2A65A` / `#F0845A` | `#E8927C` | `#241D3F` | `#F5EFEA` | `#E39A72` |
-| 3. Foggy Interception | `#3E463C` → `#8B917F` | `#4A5248` | `#C7C4AD` / `#C7C4AD` (wide blur, no glow color shift) | `#8A9478` | `#2B302A` | `#EDEEE6` | `#A8B396` |
-| 4. The Calm | `#1E4A47` → `#3E7C74` | `#16332F` | `#F5E6C8` / `#F5E6C8` | `#4FA79B` | `#163430` | `#E9F5F0` | `#6FC2B4` |
-| 5. Summit | `#C1512F` → `#F2B84B` | `#7A3B24` | `#FFD37A` / `#FFD37A` | `#F2B84B` | `#5A2C1C` | `#FBEEE0` | `#F2B84B` |
+Global (fixed, same on every slide):
+| Token | Value | Use |
+|---|---|---|
+| `--paper` | `#E9E6DF` | Slide background, every slide |
+| `--ink` | `#211E19` | Primary text |
+| `--ink-muted` | `#4A463F` | Subtitles, speaker names, stat labels |
+| `--ink-quote` | `#3A362F` | Blockquote text |
 
-Splash ink (the near-white text color used on full atmospheric splash slides) also
-locked per stage: Night `#F5F3FA`, Morning Rise `#FFF8F2`, Foggy Interception
-`#F1F0E8`, The Calm `#F4FAF7`, Summit `#FFF9EE` — each with a corresponding muted
-variant (~30-40% desaturated toward the panel color) for eyebrow/subtitle text.
+Per-stage (only these two shift):
+| Stage | `--accent` (glow, rule, blockquote border) | `--accent-text` (eyebrow, badge, bullets, stat value) |
+|---|---|---|
+| 1. Night | `#A78BFA` | `#5B3FA6` |
+| 2. Morning Rise | `#E8927C` | `#8F4527` |
+| 3. Foggy Interception | `#8A9478` | `#4B5539` |
+| 4. The Calm | `#4FA79B` | `#1F6E60` |
+| 5. Summit | `#F2B84B` | `#7A4F06` |
+
+**Why two accent values per stage:** the vivid `--accent` hues were designed for
+use against dark backgrounds. Checked directly against the paper ground
+(`#E9E6DF`), the raw accents land between 1.4:1 and 2.6:1 contrast - well below
+readable. `--accent-text` is a darkened variant of the same hue, checked to land
+between 4.8:1 and 6.3:1 against paper, and is what's used anywhere the color
+carries actual text (eyebrow, badges, bullet dashes, stat numbers). The vivid
+`--accent` is reserved for the halo glow and the divider rule/blockquote border -
+graphical marks, not text, where full saturation matters more than legibility.
+
 Implemented as `.stage-1`…`.stage-5` classes in `css/theme.css`.
 
-Full mockup reference (5 stages, one shared shape system): see conversation history
-— to be re-published as a static reference image/palette sheet once locked, since
-the live artifact link is ephemeral.
+### Stage boundary trigger - LOCKED (2026-07-30)
 
-### Stage boundary trigger — LOCKED (2026-07-30)
-
-**Content beats**, confirmed — not an even talk-count split. All 8 talks are now
+**Content beats**, confirmed - not an even talk-count split. All 8 talks are now
 drafted and cluster cleanly into 4 acts (see [[storytelling]] for the full mapping),
 which map onto the 5 stages unevenly by design: Stage 3 (Foggy Interception) alone
 carries 3 talks (2, 3+4 merged, 5) because that's genuinely the densest technical
 stretch; Stage 2 and Stage 5 carry a single talk each because they're framing/closing
 beats, not content dumps.
 
-## Shared shape system (keeps all 5 stages reading as one arc, not five decks)
+## Divider vs. content slides (layout only, not color - since the pivot)
 
-- **Mountain silhouette**: one fixed SVG ridge shape reused across every stage —
-  only its fill color and opacity change.
-- **Sun/moon motif**: a single circular "orb" element whose position, size, glow,
-  and diffusion evolve stage to stage (high pale moon → low breaking sun → diffused
-  fog-glow → soft steady sun → full bright sun).
-- **Content block placement**: eyebrow / title / subtitle / badge / quote stay in
-  consistent positions across stages — only the mountain/sky background and ink
-  color shift.
+The splash/content split still exists as a *layout* distinction, but no longer as
+a *color* one - both slide types share the same paper ground and ink. The
+difference is now just type scale and halo intensity:
 
-## Compositional elements shortlisted from earlier exploration rounds
+- **Divider slides** (`.slide-splash`) - act transitions. Bigger title
+  (`--fs-h1`), a `.rule` bar under the title in the stage's vivid `--accent`, and
+  a larger, more visible halo (`opacity: 0.22`).
+- **Content slides** (`.slide-content`) - talk recaps, quotes, stats. Smaller
+  title (`--fs-h2`), the halo drops to `opacity: 0.13` so it never competes with
+  reading, matching the same "content shouldn't fight for legibility" instinct
+  that drove the old two-tier system - just achieved by toning down one glow
+  instead of maintaining two fully separate visual treatments.
 
-Before landing on the Summit Arc, two structural (non-palette) ideas were
-shortlisted from a "sleek/nerdy" exploration round:
-- **Diff/Changelog** — content hangs off a code-diff-style line-number gutter.
-- **Progress Rail** — a persistent tick-mark rail showing position in the talk
-  sequence.
+## Compositional elements shortlisted from earlier exploration rounds (retired)
 
-**Open item**: neither has been tested against the Summit Arc's mountain/sky visual
-system yet — they may not fit tonally (diff/gutter reads as dev-tool-technical,
-which is a different register than the mountain narrative) or Progress Rail's
-wayfinding idea may fold directly into the Summit Arc's own stage progression
-instead of needing a separate rail element. Revisit once more talk content exists.
+Before landing on Paper & Halo, two structural ideas were shortlisted from an
+earlier "sleek/nerdy" exploration round: **Diff/Changelog** (content hangs off a
+code-diff-style line-number gutter) and **Progress Rail** (a persistent tick-mark
+rail showing position in the talk sequence). Neither fits Paper & Halo's quieter
+register - retired rather than revisited, kept here only as exploration history.
 
-## Readability: two-tier slide treatment (locked)
+## Typography - LOCKED (2026-07-30)
 
-Full atmospheric Summit Arc art (gradients, fog bands, mountain silhouette, orb) is
-gorgeous but was fighting body text for the same pixels — most acutely on Stage 3
-(Foggy Interception), which was *deliberately* designed as the lowest-contrast stage.
-Resolved by splitting every stage into two treatments, confirmed via mockup
-(Foggy Interception, splash vs. content):
-
-- **Splash / divider slides** — title, stage transitions, section dividers. Full-bleed
-  art exactly as designed per stage (mountain, orb, fog bands, gradient). Text stays
-  sparse (eyebrow/title/subtitle/badge), so contrast is easy to guarantee.
-- **Content slides** — talk recaps, takeaways, quote lists, anything with real reading
-  weight. The stage's gradient/fog/orb collapses to a thin identity band (~6px) in that
-  stage's two hues, and body content sits on a near-solid panel color pulled from the
-  same stage's palette (not the raw gradient). Stage identity still reads at a glance
-  (band color, stage label, accent) — it's just no longer literally fogging the words.
-
-Rejected alternative: a foreground modal/frosted panel over full art. On a content-heavy
-slide the panel would end up covering most of the artwork anyway, so it pays the
-rendering cost of a scene nobody sees while still looking like a patch.
-
-**Guardrail rule going forward**: content slides never sit directly on a stage's raw
-gradient or fog layer — only on a flat panel color derived from that stage's palette.
-This is the check to apply as real talk content gets slotted in, so per-slide contrast
-doesn't regress as talks are added.
-
-## Typography — LOCKED (2026-07-30)
-
-One consistent type system across all 5 stages, not a per-stage pairing — same
+One consistent type system across all 5 stages, not a per-stage pairing - same
 reasoning as the shared shape system: only color/light/atmosphere should change
 stage to stage, or the deck starts reading as five decks instead of one arc.
 Replaces the old Space Grotesk/Inter/JetBrains Mono set, which was written for the
 earlier terminal/dev-tool direction and skewed too code-y for a narrative register.
 
-- **Display (h1/h2, eyebrow on splash slides): Fraunces** — a warm, editorial
-  serif with real character (ties to the "trip report" storytelling register)
-  that still reads cleanly at both the cool end (Night, The Calm) and warm end
-  (Summit) of the palette, so it doesn't need swapping per stage.
-- **Body (content slide text, subtitles, bullets): Inter** — kept from the
-  original proposal. Neutral and highly readable, deliberately plain so it
-  doesn't compete with Fraunces's character on splash slides.
-- **Mono (stat callouts, data points, quote attribution): JetBrains Mono** —
+- **Display (h1/h2, eyebrow on splash slides): Fraunces** - a warm, editorial
+  serif with real character (ties to the "trip report" storytelling register).
+  Unaffected by the Paper & Halo pivot - reads just as well on paper as it did
+  on the old gradient backgrounds.
+- **Body (content slide text, subtitles, bullets): Inter** - kept from the
+  original proposal. Neutral and highly readable.
+- **Mono (stat callouts, data points, quote attribution): JetBrains Mono** -
   kept. Still earns its place for the deck's data moments (cost/points chart,
   percentages, repo counts) even though the broader terminal aesthetic was
-  dropped.
+  dropped back in the original Summit Arc pivot.
 
 ## Motion principles
 
 - Reveal.js transition: **slide** as default, **fade** for section-break/mood
-  slides — unchanged from original proposal.
-- Fragment reveals: `fade-up`, staggered — unchanged.
+  slides - unchanged from original proposal.
+- Fragment reveals: `fade-up`, staggered - unchanged.
 - Stage transitions (as the deck moves from one arc stage to the next) are a
-  natural place for a slower/more deliberate transition treatment — not yet
+  natural place for a slower/more deliberate transition treatment - not yet
   designed, flagged for follow-up.
 - No motion for motion's sake on data/quotes.
 
 ## In-person vs async badge
 
-Still open, per constitution — exact icon/wording TBD. Mockups have used a plain
-pill badge ("Live in London" / "Watched Async") styled per-stage; final visual
-treatment not locked.
+Plain text pill badge ("Live in London" / "Watched Async"), no emoji - outlined in
+the stage's `--accent-text` (not the vivid `--accent`, for the same contrast
+reason as the eyebrow). `badge-live` gets a faint fill (`--accent` at 18% via
+`color-mix`); `badge-async` stays outline-only. Implemented in `css/theme.css`.
 
 ## Change log
-- 2026-07-22 — Initial proposal: dark navy base, indigo→violet gradient accent,
+- 2026-07-22 - Initial proposal: dark navy base, indigo→violet gradient accent,
   cyan secondary, particle/constellation background.
-- 2026-07-24 — User feedback: original direction "looks the same" as generic
+- 2026-07-24 - User feedback: original direction "looks the same" as generic
   AI-product/vibe-coded aesthetics (purple-gradient-on-dark is one of the most
   common defaults right now). Began structural exploration rounds (terminal,
   journal, diff, editorial, reticle, layered windows, progress rail, callouts,
-  ledger, ticker) — shortlisted **Diff/Changelog** and **Progress Rail**.
-- 2026-07-24 — Explored literal "summit" interpretations (ascent profile,
-  diplomatic table, expedition map, broadcast, above-the-clouds) — ascent/climb
+  ledger, ticker) - shortlisted **Diff/Changelog** and **Progress Rail**.
+- 2026-07-24 - Explored literal "summit" interpretations (ascent profile,
+  diplomatic table, expedition map, broadcast, above-the-clouds) - ascent/climb
   concept resonated but execution (line chart) didn't; iterated (ridge
-  silhouette, vertical route, altimeter gauge) — still not right.
-- 2026-07-24 — Pivoted to warm/soft/pastel sunrise-over-mountain palette
+  silhouette, vertical route, altimeter gauge) - still not right.
+- 2026-07-24 - Pivoted to warm/soft/pastel sunrise-over-mountain palette
   exploration (Desert Dawn, Alpine Blush, Terracotta & Sage, Golden Hour
-  Minimal) — direction liked, but user wanted more color range (not全 earthy)
+  Minimal) - direction liked, but user wanted more color range (not全 earthy)
   and a stronger tie to the "summit" feeling specifically for a finale moment.
-- 2026-07-24 — **Landed on the Summit Arc**: a 5-stage narrative color
+- 2026-07-24 - **Landed on the Summit Arc**: a 5-stage narrative color
   progression (Night → Morning Rise → Foggy Interception → The Calm → Summit/
   Sunrise) sharing one consistent mountain-and-orb shape system, using purple/
   green/earth-tone families each tied to a specific narrative register rather
   than picked freely. Confirmed as the direction going forward.
-- 2026-07-26 — **Locked the two-tier readability split**: full atmospheric art
+- 2026-07-26 - **Locked the two-tier readability split**: full atmospheric art
   reserved for splash/divider slides; content slides use a flattened identity
   band + solid stage-derived panel so body text never sits directly on a
   gradient or fog layer. Rejected a foreground modal approach as visually
   redundant on content-heavy slides. Confirmed via Foggy Interception mockup.
-- 2026-07-30 — **Kept 5 stages, locked content-beat stage boundaries.** All 8
+- 2026-07-30 - **Kept 5 stages, locked content-beat stage boundaries.** All 8
   talks are drafted and cluster into 4 acts (see [[storytelling]]); mapped
-  unevenly onto the 5 stages by narrative weight rather than talk count —
+  unevenly onto the 5 stages by narrative weight rather than talk count -
   Stage 3 alone carries 3 talks since it's genuinely the densest stretch.
-- 2026-07-30 — **Locked exact hex values per stage** (splash gradient, mountain,
+- 2026-07-30 - **Locked exact hex values per stage** (splash gradient, mountain,
   orb, accent, plus the two-tier content-panel set) and **locked typography**:
   one consistent Fraunces/Inter/JetBrains Mono system across all 5 stages rather
   than per-stage font pairing, dropping the old Space Grotesk dev-tool set.
   Implemented in `css/theme.css` as `.stage-1`…`.stage-5` classes.
+- 2026-07-30 - **Pivoted to Paper & Halo, retiring the full atmospheric Summit
+  Arc art.** After seeing the built deck, user liked the content and 5-stage
+  structure but found the harsh gradient-to-gradient shifts between slides
+  unpleasant, and asked for a minimal style that keeps the accent color story
+  without bold full-bleed backgrounds or a separate splash treatment. Mocked up
+  and compared 4 directions (Quiet Rule, Soft Halo, Paper & Ink, Paper & Halo)
+  before building; user picked **Paper & Halo**. Retired: the gradient sky per
+  stage, the mountain silhouette, the sun/moon orb, and the two-tier
+  splash/content color split. Kept: the 5-stage accent progression and its
+  narrative mapping to the 4 acts, typography, and the badge/bullet/quote
+  component set (retextured, not redesigned). Added `--accent-text` per stage
+  (darkened variant of each accent) after checking the raw accents land at
+  1.4-2.6:1 contrast against the new paper ground - well below readable -
+  while the darkened pairs land at 4.8-6.3:1.
 
 ## Open items
-- [ ] Re-evaluate Diff/Changelog and Progress Rail against the Summit Arc, or
-      retire them in favor of the arc's own built-in progression
-- [ ] Finalize typography pairing per stage (currently placeholder serif/sans)
-- [ ] Design stage-to-stage transition treatment
-- [ ] Finalize in-person/async badge visual style
-- [ ] Lock exact hex values per stage, and per-stage content-panel colors,
-      audited for contrast/accessibility (splash vs. content treatment now
-      locked in structure — exact hex still mockup-stage)
+- [ ] Design stage-to-stage transition treatment (still open, now simpler since
+      there's no atmospheric scene to cross-fade between)

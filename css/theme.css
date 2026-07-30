@@ -6,11 +6,11 @@
   /* One fixed type scale, in rem, used identically on every slide regardless
      of how deeply an element is nested in the markup. Reveal.js scales the
      whole .reveal container via a CSS transform to fit the viewport, so rem
-     sizes still scale with the deck at presentation time — they just stop
+     sizes still scale with the deck at presentation time - they just stop
      compounding unpredictably the way nested em values did. */
-  --fs-h1: 3.4rem;        /* splash slide title */
+  --fs-h1: 3.4rem;        /* divider slide title */
   --fs-h2: 2rem;          /* content slide title */
-  --fs-subtitle: 1.3rem;  /* splash slide subtitle */
+  --fs-subtitle: 1.3rem;  /* divider slide subtitle */
   --fs-eyebrow: 0.85rem;  /* small caps label, both slide types */
   --fs-badge: 0.68rem;
   --fs-body: 1.05rem;     /* p, li */
@@ -19,143 +19,116 @@
   --fs-cite: 0.85rem;
   --fs-stat-value: 1.9rem;
   --fs-stat-label: 0.68rem;
+
+  /* Paper & Halo: one fixed warm paper ground and dark ink across every
+     slide and every stage - see design/visual-theme.md. Only the accent
+     (halo glow, eyebrow, badges, bullets, rules) shifts per stage. */
+  --paper: #E9E6DF;
+  --ink: #211E19;
+  --ink-muted: #4A463F;
+  --ink-quote: #3A362F;
+  --line: rgba(33, 30, 25, 0.14);
 }
 
-/* Summit Arc stages — one shared shape/type system, only color/light/atmosphere
-   changes per stage. Each .stage-N class sets the full variable set for both the
-   splash treatment (bg-top/bg-bottom/mountain/orb/accent) and the two-tier content
-   treatment (panel/panel-ink/panel-accent). See design/visual-theme.md. */
+/* Summit Arc stages - one shared paper/type system, only the accent pair
+   shifts stage to stage. --accent is the vivid hue (halo glow, rules,
+   blockquote border); --accent-text is a darkened variant of the same hue
+   used anywhere the color carries text or a small mark, since the vivid
+   values fall well below readable contrast on the paper ground (checked:
+   raw accents land between 1.4:1 and 2.6:1 against #E9E6DF; the darkened
+   pairs land between 4.8:1 and 6.3:1). */
 
 .stage-1 {
-  --bg-top: #0B0A14;
-  --bg-bottom: #1A1330;
-  --mountain: #050409;
-  --orb: #F4F1FA;
-  --orb-glow: #8B7FD1;
   --accent: #A78BFA;
-  --splash-ink: #F5F3FA;
-  --splash-ink-muted: #C9C2E0;
-  --panel: #16112A;
-  --panel-ink: #EDE9F7;
-  --panel-ink-muted: #B7AFD1;
-  --panel-accent: #B9A6F0;
+  --accent-text: #5B3FA6;
 }
 
 .stage-2 {
-  --bg-top: #2A2350;
-  --bg-bottom: #E8927C;
-  --mountain: #241C3D;
-  --orb: #F2A65A;
-  --orb-glow: #F0845A;
   --accent: #E8927C;
-  --splash-ink: #FFF8F2;
-  --splash-ink-muted: #E3C9C0;
-  --panel: #241D3F;
-  --panel-ink: #F5EFEA;
-  --panel-ink-muted: #C7B9C9;
-  --panel-accent: #E39A72;
+  --accent-text: #8F4527;
 }
 
 .stage-3 {
-  --bg-top: #3E463C;
-  --bg-bottom: #8B917F;
-  --mountain: #4A5248;
-  --orb: #C7C4AD;
-  --orb-glow: #C7C4AD;
   --accent: #8A9478;
-  --splash-ink: #F1F0E8;
-  --splash-ink-muted: #BFC2B4;
-  --panel: #2B302A;
-  --panel-ink: #EDEEE6;
-  --panel-ink-muted: #A9AE9E;
-  --panel-accent: #A8B396;
+  --accent-text: #4B5539;
 }
 
 .stage-4 {
-  --bg-top: #1E4A47;
-  --bg-bottom: #3E7C74;
-  --mountain: #16332F;
-  --orb: #F5E6C8;
-  --orb-glow: #F5E6C8;
   --accent: #4FA79B;
-  --splash-ink: #F4FAF7;
-  --splash-ink-muted: #B9D6CE;
-  --panel: #163430;
-  --panel-ink: #E9F5F0;
-  --panel-ink-muted: #9FC7BD;
-  --panel-accent: #6FC2B4;
+  --accent-text: #1F6E60;
 }
 
 .stage-5 {
-  --bg-top: #C1512F;
-  --bg-bottom: #F2B84B;
-  --mountain: #7A3B24;
-  --orb: #FFD37A;
-  --orb-glow: #FFD37A;
   --accent: #F2B84B;
-  --splash-ink: #FFF9EE;
-  --splash-ink-muted: #F0CBAE;
-  --panel: #5A2C1C;
-  --panel-ink: #FBEEE0;
-  --panel-ink-muted: #D9B79E;
-  --panel-accent: #F2B84B;
+  --accent-text: #7A4F06;
 }
 
 html, body {
-  background: #0B0A14;
+  background: var(--paper);
 }
 
 .reveal {
   font-family: var(--font-body);
 }
 
-/* Controls/progress default to reveal's stock blue (black.css). Retheme to
-   the active stage's accent — .reveal itself gets the current stage class
-   applied via JS on slidechanged (see index.html), since controls/progress
-   sit outside .slides and can't inherit a stage class from the section. */
 .reveal .controls {
-  color: var(--accent, #A78BFA);
+  color: var(--accent, #8A9478);
 }
 
 .reveal .progress {
-  color: var(--accent, #A78BFA);
+  color: var(--accent, #8A9478);
 }
 
-/* Splash / divider slides: full-bleed stage gradient, sparse text
-   (eyebrow/title/subtitle/badge only). See visual-theme.md two-tier rule. */
-.reveal .slides section.slide-splash {
-  background: linear-gradient(180deg, var(--bg-top) 0%, var(--bg-bottom) 100%);
-  color: var(--splash-ink);
-  text-align: left;
-  height: 100%;
-  width: 100%;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 0 6%;
-}
-
-/* Content slides: flattened identity band + solid stage-derived panel so body
-   text never sits directly on a gradient or fog layer. */
-.reveal .slides section.slide-content {
-  background: var(--panel);
-  color: var(--panel-ink);
-  text-align: left;
-  border-top: 6px solid var(--accent);
-  height: 100%;
-  width: 100%;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 3% 6%;
-  overflow-y: auto; /* safety net if a slide still runs long */
-}
-
+/* Every slide: same paper ground, same ink, a soft per-stage halo glow
+   pooling in one corner (multiply blend, so it reads as color soaked into
+   the paper rather than a light source). Divider slides get a larger, more
+   visible halo and bigger type; content slides get a quieter halo so it
+   never competes with reading. */
+/* IMPORTANT: reveal.js owns `display` and `position` on section elements
+   (display:none/block toggled via .present, position:absolute for its own
+   stacking/transition engine - see reveal.css). Never set either at the same
+   or lower specificity than `.reveal .slides>section.present` or every slide
+   ends up simultaneously visible/stacked in normal flow instead of reveal
+   showing just the active one. Layout properties below are safe since reveal
+   doesn't contest them; flex/centering is applied only via the .present-keyed
+   rule further down. reveal's own position:absolute already gives ::before a
+   containing block, so we don't need to (and must not) set position here. */
 .reveal .slides section {
-  background: transparent;
+  background: var(--paper);
+  color: var(--ink);
   text-align: left;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  overflow-y: auto;
+  padding: 3% 6%;
+}
+
+.reveal .slides section.present {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.reveal .slides section::before {
+  content: "";
+  position: absolute;
+  top: -25%;
+  right: -15%;
+  width: 50%;
+  height: 80%;
+  background: radial-gradient(circle, var(--accent) 0%, transparent 72%);
+  opacity: 0.22;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+}
+
+.reveal .slides section.slide-content::before {
+  width: 34%;
+  height: 55%;
+  top: -15%;
+  right: -10%;
+  opacity: 0.13;
 }
 
 .reveal h1, .reveal h2, .reveal h3 {
@@ -163,6 +136,7 @@ html, body {
   font-weight: 600;
   letter-spacing: -0.01em;
   line-height: 1.15;
+  color: var(--ink);
 }
 
 .slide-splash h1 {
@@ -175,50 +149,39 @@ html, body {
   margin: 0 0 0.5em;
 }
 
-.slide-splash h1, .slide-splash h2, .slide-splash h3 {
-  color: var(--splash-ink);
-}
-
-.slide-content h1, .slide-content h2, .slide-content h3 {
-  color: var(--panel-ink);
-}
-
 .reveal .eyebrow {
   display: inline-block;
   font-family: var(--font-mono);
   font-size: var(--fs-eyebrow);
   letter-spacing: 0.08em;
   text-transform: uppercase;
+  color: var(--accent-text);
   margin: 0 0 0.6em;
   line-height: 1.3;
 }
 
-.slide-splash .eyebrow {
-  color: var(--splash-ink-muted);
-}
-
-.slide-content .eyebrow {
-  color: var(--panel-accent);
-}
-
 .reveal .subtitle {
+  display: block;
   font-family: var(--font-body);
   font-size: var(--fs-subtitle);
+  color: var(--ink-muted);
   margin: 0.6em 0 0;
 }
 
-.slide-splash .subtitle {
-  color: var(--splash-ink-muted);
-}
-
-.slide-content .subtitle {
-  color: var(--panel-ink-muted);
+/* Thin accent rule under divider titles - the one graphic element carrying
+   the stage color at full strength, since it's a bar, not text. */
+.rule {
+  width: 2.6em;
+  height: 2px;
+  background: var(--accent);
+  margin: 0.5em 0 0.7em;
 }
 
 .reveal p, .reveal li {
   font-family: var(--font-body);
   font-size: var(--fs-body);
   line-height: 1.45;
+  color: var(--ink);
 }
 
 .reveal blockquote,
@@ -226,15 +189,10 @@ html, body {
 .reveal code {
   font-family: var(--font-mono);
   font-size: var(--fs-quote);
+  color: var(--ink-quote);
   border-left: 3px solid var(--accent);
+  background: rgba(33, 30, 25, 0.04);
   box-shadow: none;
-}
-
-.slide-content blockquote,
-.slide-content pre,
-.slide-content code {
-  background: rgba(0, 0, 0, 0.15);
-  color: var(--panel-ink);
 }
 
 .reveal blockquote {
@@ -262,11 +220,12 @@ html, body {
   content: "-";
   position: absolute;
   left: 0;
-  color: var(--panel-accent);
+  color: var(--accent-text);
+  font-weight: 600;
 }
 
 /* Talk header: eyebrow (talk title) and attribution badges sit side by side
-   as siblings, not nested — keeps badge sizing identical everywhere instead
+   as siblings, not nested - keeps badge sizing identical everywhere instead
    of compounding differently depending on markup depth. */
 .talk-header {
   display: flex;
@@ -292,7 +251,7 @@ html, body {
 .speaker-name {
   font-family: var(--font-body);
   font-size: var(--fs-meta);
-  color: var(--panel-ink-muted);
+  color: var(--ink-muted);
 }
 
 /* Big-number stat callouts (repo counts, cost, percentages) */
@@ -312,7 +271,7 @@ html, body {
   font-size: var(--fs-stat-value);
   font-weight: 600;
   line-height: 1;
-  color: var(--panel-accent);
+  color: var(--accent-text);
 }
 
 .stat .stat-label {
@@ -321,7 +280,7 @@ html, body {
   font-size: var(--fs-stat-label);
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: var(--panel-ink-muted);
+  color: var(--ink-muted);
 }
 
 .chart-img {
@@ -329,6 +288,7 @@ html, body {
   max-height: 42vh;
   border-radius: 4px;
   margin-top: 0.5em;
+  border: 1px solid var(--line);
 }
 
 .reveal .slides section cite {
@@ -336,7 +296,7 @@ html, body {
   font-family: var(--font-body);
   font-style: normal;
   font-size: var(--fs-cite);
-  color: var(--panel-ink-muted);
+  color: var(--ink-muted);
   margin-top: 0.5em;
 }
 
@@ -351,21 +311,12 @@ html, body {
   text-transform: uppercase;
   padding: 0.3em 0.7em;
   border-radius: 999px;
-  border: 1px solid var(--accent);
-  color: var(--accent);
-}
-
-.slide-content .badge {
-  border-color: var(--panel-accent);
-  color: var(--panel-accent);
+  border: 1px solid var(--accent-text);
+  color: var(--accent-text);
 }
 
 .badge-live {
-  background: color-mix(in srgb, var(--accent) 15%, transparent);
-}
-
-.slide-content .badge-live {
-  background: color-mix(in srgb, var(--panel-accent) 15%, transparent);
+  background: color-mix(in srgb, var(--accent) 18%, transparent);
 }
 
 .badge-async {
