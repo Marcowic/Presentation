@@ -110,6 +110,16 @@
             Kimi is the first to shake Sonnet's position; DeepSeek is its own
             category on cost efficiency alone.</li>
         </ul>
+      </section>
+
+      <section class="stage-3 slide-content">
+        <div class="talk-header">
+          <span class="eyebrow">Learnings From 100+ Experiments Comparing LLMs</span>
+          <span class="talk-badges">
+            <span class="badge badge-live">Live in London</span>
+          </span>
+        </div>
+        <h2>Cost vs. points - where the value actually is</h2>
         <img class="chart-img fragment fade-up" src="assets/images/cost-points-chart.png"
              alt="Cost vs. points chart from Povilas Korop's benchmark" />
       </section>
@@ -374,6 +384,8 @@
     </div>
   </div>
 
+  <div class="page-halo" aria-hidden="true"></div>
+
   <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/markdown/markdown.js"></script>
@@ -388,17 +400,30 @@
       controls: true,
       progress: true,
       center: false,
+      margin: 0,
       plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
     });
 
-    // Controls/progress bar color tracks the active slide's stage (see
-    // theme.css .reveal .controls / .progress reading --accent), since they
-    // sit outside .slides and don't inherit a stage class from the section.
+    // Controls/progress bar color, and the page-wide halo glow (.page-halo),
+    // track the active slide's stage + type (see theme.css .page-halo /
+    // .controls / .progress reading --accent), since they sit outside
+    // .slides and don't inherit a stage class from the section. .page-halo
+    // is a fixed, top-z-index element deliberately kept outside .reveal so
+    // it always paints above the slide content, regardless of reveal.js's
+    // own internal stacking/transform behaviour during transitions.
     const revealEl = document.querySelector('.reveal');
+    const haloEl = document.querySelector('.page-halo');
     function syncStageClass(slide) {
       const stageClass = [...slide.classList].find((c) => c.startsWith('stage-'));
-      revealEl.className = revealEl.className.replace(/\bstage-\d+\b/g, '').trim();
-      if (stageClass) revealEl.classList.add(stageClass);
+      const isSplash = slide.classList.contains('slide-splash');
+      [revealEl, haloEl].forEach((el) => {
+        el.className = el.className
+          .replace(/\bstage-\d+\b/g, '')
+          .replace(/\bis-(splash|content)\b/g, '')
+          .trim();
+        if (stageClass) el.classList.add(stageClass);
+        el.classList.add(isSplash ? 'is-splash' : 'is-content');
+      });
     }
     Reveal.on('slidechanged', (event) => syncStageClass(event.currentSlide));
     Reveal.on('ready', (event) => syncStageClass(event.currentSlide));

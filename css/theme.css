@@ -68,6 +68,18 @@ html, body {
   overflow-x: hidden;
 }
 
+/* reveal.js paints the letterboxing area outside the scaled 4:3 stage via
+   .reveal-viewport's own background (driven by --r-background-color from the
+   base black.css theme, which defaults to near-black). Override both so the
+   paper ground reaches the full page, not just the stage. */
+:root {
+  --r-background-color: var(--paper);
+}
+
+.reveal-viewport {
+  background: var(--paper);
+}
+
 .reveal {
   font-family: var(--font-body);
 }
@@ -80,11 +92,7 @@ html, body {
   color: var(--accent, #8A9478);
 }
 
-/* Every slide: same paper ground, same ink, a soft per-stage halo glow
-   pooling in one corner (multiply blend, so it reads as color soaked into
-   the paper rather than a light source). Divider slides get a larger, more
-   visible halo and bigger type; content slides get a quieter halo so it
-   never competes with reading. */
+/* Every slide: same paper ground, same ink. */
 /* IMPORTANT: reveal.js owns `display` and `position` on section elements
    (display:none/block toggled via .present, position:absolute for its own
    stacking/transition engine - see reveal.css). Never set either at the same
@@ -92,8 +100,7 @@ html, body {
    ends up simultaneously visible/stacked in normal flow instead of reveal
    showing just the active one. Layout properties below are safe since reveal
    doesn't contest them; flex/centering is applied only via the .present-keyed
-   rule further down. reveal's own position:absolute already gives ::before a
-   containing block, so we don't need to (and must not) set position here. */
+   rule further down. */
 .reveal .slides section {
   background: var(--paper);
   color: var(--ink);
@@ -112,25 +119,45 @@ html, body {
   justify-content: center;
 }
 
-.reveal .slides section::before {
+/* A soft per-stage halo glow pooling in one corner (multiply blend, so it
+   reads as color soaked into the paper rather than a light source). This is
+   a real element (.page-halo, appended just before the reveal.js scripts in
+   index.html), not a pseudo-element on .reveal - it's pinned via
+   position:fixed + a high z-index so it always paints above every slide,
+   independent of reveal.js's own internal transform/stacking behaviour
+   during transitions. (An earlier ::before/::after attempt on .reveal was
+   unreliable: each slide section paints its own opaque paper background, and
+   reveal.js assigns its own z-index to slides during transitions, so paint
+   order relative to a pseudo-element on an ancestor couldn't be trusted.)
+   Carries the current slide's stage-N class (for --accent) and
+   is-splash/is-content class (for size/intensity), synced in the script
+   below on every slide change. */
+.page-halo {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+.page-halo::before {
   content: "";
   position: absolute;
+  top: -15%;
+  right: -10%;
+  width: 34%;
+  height: 55%;
+  background: radial-gradient(circle, var(--accent, #8A9478) 0%, transparent 72%);
+  opacity: 0.13;
+  mix-blend-mode: multiply;
+  transition: opacity 0.4s ease;
+}
+
+.page-halo.is-splash::before {
   top: -25%;
   right: -15%;
   width: 50%;
   height: 80%;
-  background: radial-gradient(circle, var(--accent) 0%, transparent 72%);
   opacity: 0.22;
-  mix-blend-mode: multiply;
-  pointer-events: none;
-}
-
-.reveal .slides section.slide-content::before {
-  width: 34%;
-  height: 55%;
-  top: -15%;
-  right: -10%;
-  opacity: 0.13;
 }
 
 .reveal h1, .reveal h2, .reveal h3 {
@@ -286,10 +313,11 @@ html, body {
 }
 
 .chart-img {
+  display: block;
   max-width: 55%;
-  max-height: 42vh;
+  max-height: 55vh;
+  margin: 0.5em auto 0;
   border-radius: 4px;
-  margin-top: 0.5em;
   border: 1px solid var(--line);
 }
 
