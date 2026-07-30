@@ -14,6 +14,7 @@ Running index of talks covered. One row per talk, updated as content comes in.
 | 3 | AI Reviews AI – Closing the Loop in Agentic Development | Daniel Sogl | 🟢 In person | Drafted — `content/talk_3_daniel_sogl.md` |
 | 4 | Fast Code Generation Is Easy. Safe System-level Change Is Not. | Bart Waardenburg | 🔵 Async | Drafted — `content/talk_4_bart_waardenburg.md` |
 | 5 | Learnings From 100+ Experiments Comparing LLMs for AI Coding | Povilas Korop | 🟢 In person | Drafted — `content/talk_5_povilas_korop.md` |
+| 6 | From Prompt Engineering to Loop Engineering | Valerii Latsko | 🟢 In person | Drafted — `content/talk_6_valerii_latsko.md` |
 
 Mode: 🟢 In person (London) · 🔵 Async/remote
 
