@@ -3,7 +3,7 @@ talk_id: 03-daniel-sogl-ai-reviews-ai
 title: AI Reviews AI – Closing the Loop in Agentic Development
 speaker: Daniel Sogl
 mode: in-person
-status: drafted # raw | drafted | in-deck
+status: in-deck # raw | drafted | in-deck
 ---
 
 # Talk details

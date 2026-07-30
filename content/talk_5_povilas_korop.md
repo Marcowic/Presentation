@@ -3,7 +3,7 @@ talk_id: 05-povilas-korop-llm-experiments
 title: Learnings From 100+ Experiments Comparing LLMs for AI Coding
 speaker: Povilas Korop
 mode: in-person
-status: drafted
+status: in-deck
 ---
 
 # Talk details

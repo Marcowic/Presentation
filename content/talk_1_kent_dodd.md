@@ -3,7 +3,7 @@ talk_id: 01-kent-dodds-last-software-engineer
 title: The Last Software Engineer
 speaker: Kent C. Dodds
 mode: async
-status: drafted # raw | drafted | in-deck
+status: in-deck # raw | drafted | in-deck
 ---
 
 # Talk details

@@ -2,6 +2,23 @@
   --font-heading: 'Fraunces', serif;
   --font-body: 'Inter', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
+
+  /* One fixed type scale, in rem, used identically on every slide regardless
+     of how deeply an element is nested in the markup. Reveal.js scales the
+     whole .reveal container via a CSS transform to fit the viewport, so rem
+     sizes still scale with the deck at presentation time — they just stop
+     compounding unpredictably the way nested em values did. */
+  --fs-h1: 3.4rem;        /* splash slide title */
+  --fs-h2: 2rem;          /* content slide title */
+  --fs-subtitle: 1.3rem;  /* splash slide subtitle */
+  --fs-eyebrow: 0.85rem;  /* small caps label, both slide types */
+  --fs-badge: 0.68rem;
+  --fs-body: 1.05rem;     /* p, li */
+  --fs-meta: 0.85rem;     /* speaker names next to badges */
+  --fs-quote: 1.15rem;
+  --fs-cite: 0.85rem;
+  --fs-stat-value: 1.9rem;
+  --fs-stat-label: 0.68rem;
 }
 
 /* Summit Arc stages — one shared shape/type system, only color/light/atmosphere
@@ -132,7 +149,8 @@ html, body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 4% 6%;
+  padding: 3% 6%;
+  overflow-y: auto; /* safety net if a slide still runs long */
 }
 
 .reveal .slides section {
@@ -144,6 +162,17 @@ html, body {
   font-family: var(--font-heading);
   font-weight: 600;
   letter-spacing: -0.01em;
+  line-height: 1.15;
+}
+
+.slide-splash h1 {
+  font-size: var(--fs-h1);
+  margin: 0;
+}
+
+.slide-content h2 {
+  font-size: var(--fs-h2);
+  margin: 0 0 0.5em;
 }
 
 .slide-splash h1, .slide-splash h2, .slide-splash h3 {
@@ -157,10 +186,11 @@ html, body {
 .reveal .eyebrow {
   display: inline-block;
   font-family: var(--font-mono);
-  font-size: 0.5em;
+  font-size: var(--fs-eyebrow);
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  margin-bottom: 0.5em;
+  margin: 0 0 0.6em;
+  line-height: 1.3;
 }
 
 .slide-splash .eyebrow {
@@ -173,7 +203,8 @@ html, body {
 
 .reveal .subtitle {
   font-family: var(--font-body);
-  font-size: 0.6em;
+  font-size: var(--fs-subtitle);
+  margin: 0.6em 0 0;
 }
 
 .slide-splash .subtitle {
@@ -186,13 +217,15 @@ html, body {
 
 .reveal p, .reveal li {
   font-family: var(--font-body);
-  line-height: 1.5;
+  font-size: var(--fs-body);
+  line-height: 1.45;
 }
 
 .reveal blockquote,
 .reveal pre,
 .reveal code {
   font-family: var(--font-mono);
+  font-size: var(--fs-quote);
   border-left: 3px solid var(--accent);
   box-shadow: none;
 }
@@ -205,9 +238,106 @@ html, body {
 }
 
 .reveal blockquote {
-  padding: 0.8em 1em;
+  padding: 0.7em 1em;
   font-style: normal;
   width: 100%;
+  margin: 0.5em 0;
+}
+
+/* Content-slide bullets: dash markers instead of default browser bullets,
+   keeps the editorial register instead of reading as a generic slide deck. */
+.slide-content ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0.5em 0;
+}
+
+.slide-content li {
+  position: relative;
+  padding-left: 1.2em;
+  margin-bottom: 0.5em;
+}
+
+.slide-content li::before {
+  content: "-";
+  position: absolute;
+  left: 0;
+  color: var(--panel-accent);
+}
+
+/* Talk header: eyebrow (talk title) and attribution badges sit side by side
+   as siblings, not nested — keeps badge sizing identical everywhere instead
+   of compounding differently depending on markup depth. */
+.talk-header {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  column-gap: 0.8em;
+  row-gap: 0.3em;
+  margin-bottom: 0.6em;
+}
+
+.talk-header .eyebrow {
+  margin: 0;
+}
+
+.talk-badges {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  column-gap: 0.5em;
+  row-gap: 0.3em;
+}
+
+.speaker-name {
+  font-family: var(--font-body);
+  font-size: var(--fs-meta);
+  color: var(--panel-ink-muted);
+}
+
+/* Big-number stat callouts (repo counts, cost, percentages) */
+.stat-row {
+  display: flex;
+  gap: 2.2em;
+  margin-top: 0.6em;
+  flex-wrap: wrap;
+}
+
+.stat {
+  font-family: var(--font-mono);
+}
+
+.stat .stat-value {
+  display: block;
+  font-size: var(--fs-stat-value);
+  font-weight: 600;
+  line-height: 1;
+  color: var(--panel-accent);
+}
+
+.stat .stat-label {
+  display: block;
+  margin-top: 0.35em;
+  font-size: var(--fs-stat-label);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--panel-ink-muted);
+}
+
+.chart-img {
+  max-width: 55%;
+  max-height: 42vh;
+  border-radius: 4px;
+  margin-top: 0.5em;
+}
+
+.reveal .slides section cite {
+  display: block;
+  font-family: var(--font-body);
+  font-style: normal;
+  font-size: var(--fs-cite);
+  color: var(--panel-ink-muted);
+  margin-top: 0.5em;
 }
 
 /* Attendance badges */
@@ -216,17 +346,26 @@ html, body {
   align-items: center;
   gap: 0.4em;
   font-family: var(--font-mono);
-  font-size: 0.45em;
+  font-size: var(--fs-badge);
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  padding: 0.3em 0.8em;
+  padding: 0.3em 0.7em;
   border-radius: 999px;
   border: 1px solid var(--accent);
   color: var(--accent);
 }
 
+.slide-content .badge {
+  border-color: var(--panel-accent);
+  color: var(--panel-accent);
+}
+
 .badge-live {
   background: color-mix(in srgb, var(--accent) 15%, transparent);
+}
+
+.slide-content .badge-live {
+  background: color-mix(in srgb, var(--panel-accent) 15%, transparent);
 }
 
 .badge-async {

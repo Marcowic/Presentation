@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-  <title>AI Coding Summit — London</title>
+  <title>AI Coding Summit - London</title>
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/black.css" id="reveal-base-theme" />
@@ -21,12 +21,349 @@
       <section class="stage-1 slide-splash" data-transition="fade">
         <span class="eyebrow">London · 2026</span>
         <h1>AI Coding Summit</h1>
-        <p class="subtitle">A trip report — in the room, and async</p>
+        <p class="subtitle">A trip report - in the room, and async</p>
       </section>
 
       <section class="stage-1 slide-content">
-        <h2>Placeholder</h2>
-        <p>Stage/typography system is locked — talk slides coming next.</p>
+        <span class="eyebrow">The trip</span>
+        <h2>Eight talks, two ways of being there</h2>
+        <p>Some caught live in London, some watched async after the fact - same
+        summit, two lenses. <span class="badge badge-live">Live in London</span>
+        <span class="badge badge-async">Watched Async</span> mark which is which
+        as we go.</p>
+        <p>What follows isn't a talk-by-talk recap. It's four threads that ran
+        through all eight: a thesis about judgement, the practical craft of
+        working with agents, what happens when you let them run at scale, and
+        what it should all be doing for you as an engineer.</p>
+      </section>
+
+      <!-- ============================= ACT I ============================= -->
+
+      <section class="stage-2 slide-splash" data-transition="fade">
+        <span class="eyebrow">Act I</span>
+        <h1>The Judgement Thesis</h1>
+        <p class="subtitle">The frame everything else in this deck plays against</p>
+      </section>
+
+      <section class="stage-2 slide-content">
+        <div class="talk-header">
+          <span class="eyebrow">The Last Software Engineer</span>
+          <span class="talk-badges">
+            <span class="badge badge-async">Watched Async</span>
+          </span>
+        </div>
+        <h2>Kent C. Dodds</h2>
+        <ul>
+          <li class="fragment fade-up">Agentic tools are doing more of the work
+            we used to do - which sounds like less is left for us, but isn't.</li>
+          <li class="fragment fade-up">If one "last software engineer" were all
+            that remained, what would still be essential? His answer:
+            <strong>judgement</strong> - knowing what's worth building.</li>
+          <li class="fragment fade-up"><strong>Product engineering</strong> -
+            the more human half of the job - becomes the pillar of modern
+            software engineering. Not the same as product management, which is
+            stakeholder-facing.</li>
+          <li class="fragment fade-up">The shift: less "how well can I hit the
+            target," more "do I know which target to hit."</li>
+        </ul>
+      </section>
+
+      <section class="stage-2 slide-content">
+        <div class="talk-header">
+          <span class="eyebrow">Kent C. Dodds</span>
+        </div>
+        <h2>Building it right is downstream of building the right thing</h2>
+        <blockquote>
+          "Building the thing right is downstream of building the right thing."
+          <cite>- Wayne Allan, quoted on Kent Dodds's podcast</cite>
+        </blockquote>
+        <p class="fragment fade-up">Pure coding ability matters less for hitting
+        targets that actually matter. The rest of this deck is what that looks
+        like in practice - and it keeps circling back to this same idea.</p>
+      </section>
+
+      <!-- ============================= ACT II ============================= -->
+
+      <section class="stage-3 slide-splash" data-transition="fade">
+        <span class="eyebrow">Act II</span>
+        <h1>Choose. Equip. Guard.</h1>
+        <p class="subtitle">Three practical layers of actually working with agents</p>
+      </section>
+
+      <section class="stage-3 slide-content">
+        <div class="talk-header">
+          <span class="eyebrow">Learnings From 100+ Experiments Comparing LLMs</span>
+          <span class="talk-badges">
+            <span class="badge badge-live">Live in London</span>
+          </span>
+        </div>
+        <h2>Povilas Korop - picking a model is step one</h2>
+        <ul>
+          <li class="fragment fade-up">Runs his own benchmark, from his own
+            use case and workflow, against the flood of new model releases.</li>
+          <li class="fragment fade-up">Benchmarks are getting harder to trust -
+            agents have become <em>evaluation-aware</em>.</li>
+          <li class="fragment fade-up">Chinese models are closing the gap fast:
+            Kimi is the first to shake Sonnet's position; DeepSeek is its own
+            category on cost efficiency alone.</li>
+        </ul>
+        <img class="chart-img fragment fade-up" src="assets/images/cost-points-chart.png"
+             alt="Cost vs. points chart from Povilas Korop's benchmark" />
+      </section>
+
+      <section class="stage-3 slide-content">
+        <div class="talk-header">
+          <span class="eyebrow">Povilas Korop</span>
+        </div>
+        <h2>Best value for money: different models, different jobs</h2>
+        <div class="stat-row">
+          <div class="stat fragment fade-up">
+            <span class="stat-value">Opus / Fable</span>
+            <span class="stat-label">Planning</span>
+          </div>
+          <div class="stat fragment fade-up">
+            <span class="stat-value">Composer / DeepSeek</span>
+            <span class="stat-label">Implementing</span>
+          </div>
+          <div class="stat fragment fade-up">
+            <span class="stat-value">Any (different one)</span>
+            <span class="stat-label">Review</span>
+          </div>
+        </div>
+        <p class="fragment fade-up">Opus and GPT still lead on raw quality, but
+        cost more. Bottom line, in his own words: <em>"it depends."</em></p>
+      </section>
+
+      <section class="stage-3 slide-content">
+        <div class="talk-header">
+          <span class="eyebrow">Skill Design for LLM Agents</span>
+          <span class="talk-badges">
+            <span class="badge badge-async">Watched Async</span>
+          </span>
+        </div>
+        <h2>Minko Gechev - then you equip it</h2>
+        <ul>
+          <li class="fragment fade-up">Prefer <strong>CLIs over MCPs</strong>:
+            faster, use the user's own auth, no server to keep alive, easier to
+            debug, better context preservation.</li>
+          <li class="fragment fade-up">Write skills as deterministic procedure,
+            not a conversation with a human.</li>
+          <li class="fragment fade-up">Name and scope tightly - use negative
+            triggers (e.g. an angular-testing skill that says "not for React or
+            Vue") so agents don't reach for the wrong skill.</li>
+          <li class="fragment fade-up">Keep the skill file lean; push detail into
+            referenced resources so the model loads only what it needs.</li>
+        </ul>
+      </section>
+
+      <section class="stage-3 slide-content">
+        <div class="talk-header">
+          <span class="eyebrow">Minko Gechev</span>
+        </div>
+        <h2>Skills need evals too</h2>
+        <ul>
+          <li class="fragment fade-up">Script repetitive sub-tasks and reference
+            the script from the skill, rather than re-describing the steps.</li>
+          <li class="fragment fade-up">For advanced cases, skills can nest and
+            conditionally route to other skills.</li>
+          <li class="fragment fade-up">Eval and test skills like you would code -
+            catch regressions before they ship. "Skillgrade" builds and scores
+            these tests.</li>
+          <li class="fragment fade-up"><strong>Hill-climbing</strong>: a skill
+            improving itself through automated self-evaluation over time.</li>
+        </ul>
+      </section>
+
+      <section class="stage-3 slide-content">
+        <div class="talk-header">
+          <span class="eyebrow">AI Reviews AI &middot; Fast Generation, Safe Change</span>
+          <span class="talk-badges">
+            <span class="speaker-name">Daniel Sogl</span>
+            <span class="badge badge-live">Live in London</span>
+            <span class="speaker-name">Bart Waardenburg</span>
+            <span class="badge badge-async">Watched Async</span>
+          </span>
+        </div>
+        <h2>Then you guard it - review is the new bottleneck</h2>
+        <div class="stat-row">
+          <div class="stat fragment fade-up">
+            <span class="stat-value">+441%</span>
+            <span class="stat-label">Time in PR review</span>
+          </div>
+          <div class="stat fragment fade-up">
+            <span class="stat-value">+31%</span>
+            <span class="stat-label">PRs merged unreviewed</span>
+          </div>
+          <div class="stat fragment fade-up">
+            <span class="stat-value">+243%</span>
+            <span class="stat-label">Incidents per PR</span>
+          </div>
+        </div>
+        <p class="fragment fade-up"><cite>Faros AI, 2026 - 22,000 developers surveyed</cite></p>
+        <p class="fragment fade-up">The trap: <strong>"plausible code"</strong> -
+        pipeline green, linter green, looks right, so why review it at all?</p>
+      </section>
+
+      <section class="stage-3 slide-content">
+        <div class="talk-header">
+          <span class="eyebrow">Sogl + Waardenburg</span>
+        </div>
+        <h2>Deterministic guardrails, not prompted trust</h2>
+        <ul>
+          <li class="fragment fade-up">A rules file (CLAUDE.md) is delivered as
+            a user message - the agent can and will deviate from it once
+            things get interesting. No compliance guarantee.</li>
+          <li class="fragment fade-up">Put checks where they can't be skipped:
+            <strong>hooks</strong> at specific lifecycle points, not blanket
+            context. The agent takes the shortest path to "working" - so make
+            the shortest path the correct one.</li>
+          <li class="fragment fade-up">Tests are the spec: with TDD/BDD you own
+            the spec, the agent owns the implementation. (Watch out - it's easy
+            to let the agent write tests <em>from</em> the code, which just
+            enshrines the bug.)</li>
+        </ul>
+      </section>
+
+      <section class="stage-3 slide-content">
+        <div class="talk-header">
+          <span class="eyebrow">Sogl + Waardenburg</span>
+        </div>
+        <h2>Who reviews the reviewer?</h2>
+        <ul>
+          <li class="fragment fade-up">Same-model review shows family-level
+            bias - GPT favours GPT, Claude favours Claude. Rubber-ducking, not
+            reviewing.</li>
+          <li class="fragment fade-up"><strong>Always use a different model to
+            review</strong> than the one that wrote the code.</li>
+          <li class="fragment fade-up">Two cheaper models reviewing each other
+            gets close to one expensive model's review quality - for a fraction
+            of the token spend.</li>
+        </ul>
+      </section>
+
+      <!-- ============================= ACT III ============================= -->
+
+      <section class="stage-4 slide-splash" data-transition="fade">
+        <span class="eyebrow">Act III</span>
+        <h1>Loop Engineering</h1>
+        <p class="subtitle">What becomes possible once the guardrails are trusted</p>
+      </section>
+
+      <section class="stage-4 slide-content">
+        <div class="talk-header">
+          <span class="eyebrow">From Prompt Engineering to Loop Engineering</span>
+          <span class="talk-badges">
+            <span class="badge badge-live">Live in London</span>
+          </span>
+        </div>
+        <h2>Valerii Latsko - the concept</h2>
+        <ul>
+          <li class="fragment fade-up">Agents got fast; steering stayed manual -
+            the human became the bottleneck. Loop engineering automates the
+            steering: prompt &rarr; inspect &rarr; re-prompt &rarr; repeat.</li>
+          <li class="fragment fade-up">The human keeps the goals, boundaries, and
+            gates; the loop keeps the agent moving inside them.</li>
+          <li class="fragment fade-up">Use cases: repo maintenance and triage,
+            migrations and ports, small features, whole apps from a spec.</li>
+          <li class="fragment fade-up">Proof it can run unattended for a long
+            time: the <a href="https://github.com/ghuntley/cursed" target="_blank" rel="noopener">"cursed"</a>
+            programming language ran on one evolving <code>prompt.md</code> for
+            three straight months.</li>
+        </ul>
+      </section>
+
+      <section class="stage-4 slide-content">
+        <div class="talk-header">
+          <span class="eyebrow">From One Repo to Hundreds</span>
+          <span class="talk-badges">
+            <span class="badge badge-live">Live in London</span>
+          </span>
+        </div>
+        <h2>Konstantinos Leimonis - proof at scale</h2>
+        <div class="stat-row">
+          <div class="stat fragment fade-up">
+            <span class="stat-value">527</span>
+            <span class="stat-label">Repos migrated</span>
+          </div>
+          <div class="stat fragment fade-up">
+            <span class="stat-value">87%</span>
+            <span class="stat-label">No human in the loop</span>
+          </div>
+        </div>
+        <ul>
+          <li class="fragment fade-up">Started at 1 repo, 1 agent, 5 baseline
+            steps - refined from there. Not manual, because scale demanded it.</li>
+          <li class="fragment fade-up">Agents are stateless: read the board,
+            write the result, stop. A deterministic contract tracks status and
+            next steps, and the same loop resolves PR conflicts and pipeline
+            failures.</li>
+        </ul>
+      </section>
+
+      <section class="stage-4 slide-content">
+        <div class="talk-header">
+          <span class="eyebrow">Latsko + Leimonis</span>
+        </div>
+        <h2>Tests are the agents' eyesight</h2>
+        <p class="fragment fade-up">Across both talks, the same load-bearing
+        idea: autonomous agents need a deterministic signal of success to steer
+        by. Tests are that signal - without them, "loop engineering" is just
+        hoping at scale.</p>
+        <p class="fragment fade-up"><strong>Verification matters more than
+        autonomy.</strong> The goal was never removing the human - it was moving
+        the human from steering every step to setting the goals and the checks.</p>
+      </section>
+
+      <!-- ============================= ACT IV ============================= -->
+
+      <section class="stage-5 slide-splash" data-transition="fade">
+        <span class="eyebrow">Act IV</span>
+        <h1>The Close</h1>
+        <p class="subtitle">So what does this mean for how I work?</p>
+      </section>
+
+      <section class="stage-5 slide-content">
+        <div class="talk-header">
+          <span class="eyebrow">Debugging Performance With AI</span>
+          <span class="talk-badges">
+            <span class="badge badge-live">Live in London</span>
+          </span>
+        </div>
+        <h2>Bernie Sumption - AI should make you better, not just faster</h2>
+        <ul>
+          <li class="fragment fade-up">Rendering performance used to be a black
+            box; a Chrome DevTools MCP server turns it into something you can
+            explore and experiment with directly.</li>
+          <li class="fragment fade-up">Always ask the AI what the <em>options</em>
+            are, not just for the answer - that's how you build your own
+            toolbox instead of outsourcing it.</li>
+          <li class="fragment fade-up">AI is genuinely great at writing custom
+            lint rules - a small, concrete way to turn a one-off fix into a
+            standing guardrail.</li>
+        </ul>
+      </section>
+
+      <section class="stage-5 slide-content">
+        <div class="talk-header">
+          <span class="eyebrow">Closing thought</span>
+        </div>
+        <h2>Judgement, guarded by process</h2>
+        <p class="fragment fade-up">Every talk here pointed at the same thing
+        from a different angle: pure coding ability matters less now, judgement
+        matters more. That's true for the big calls (what's worth building) and
+        the small ones (which model for which job, where to put a guardrail,
+        when to trust an agent to run unattended).</p>
+        <p class="fragment fade-up">The common thread I keep landing on is
+        <strong>verification over autonomy</strong> - deterministic checks, the
+        right model for the right stage, a different model reviewing than wrote
+        it, tests as the signal an agent steers by. None of that is about
+        slowing agents down. It's what makes trusting them further actually
+        earned instead of assumed.</p>
+        <p class="fragment fade-up">What I'm taking forward: keep building
+        things and letting some of them fail, since that's still the only way I
+        know to sharpen judgement. And keep asking AI what my options are, not
+        just for the answer - that's the difference between it doing my job and
+        it making me better at it.</p>
       </section>
 
     </div>

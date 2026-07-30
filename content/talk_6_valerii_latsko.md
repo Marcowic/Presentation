@@ -3,7 +3,7 @@ talk_id: 06-valerii-latsko-loop-engineering
 title: From Prompt Engineering to Loop Engineering
 speaker: Valerii Latsko
 mode: in-person
-status: drafted # raw | drafted | in-deck
+status: in-deck # raw | drafted | in-deck
 ---
 
 # Talk details

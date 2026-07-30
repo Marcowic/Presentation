@@ -9,14 +9,14 @@ Running index of talks covered. One row per talk, updated as content comes in.
 
 | # | Talk | Speaker | Mode | Status |
 |---|---|---|---|---|
-| 1 | The Last Software Engineer | Kent C. Dodds | 🔵 Async | Drafted — `content/talk_1_kent_dodd.md` |
-| 2 | Skill Design for LLM Agents | Minko Gechev | 🔵 Async | Drafted — `content/talk_2_minko_gechev.md` |
-| 3 | AI Reviews AI – Closing the Loop in Agentic Development | Daniel Sogl | 🟢 In person | Drafted — `content/talk_3_daniel_sogl.md` |
-| 4 | Fast Code Generation Is Easy. Safe System-level Change Is Not. | Bart Waardenburg | 🔵 Async | Drafted — `content/talk_4_bart_waardenburg.md` |
-| 5 | Learnings From 100+ Experiments Comparing LLMs for AI Coding | Povilas Korop | 🟢 In person | Drafted — `content/talk_5_povilas_korop.md` |
-| 6 | From Prompt Engineering to Loop Engineering | Valerii Latsko | 🟢 In person | Drafted — `content/talk_6_valerii_latsko.md` |
-| 7 | From One Repo to Hundreds: Building an AI Agent Fleet for Large-Scale Code Migrations | Konstantinos Leimonis | 🟢 In person | Drafted — `content/talk_7_konstantinos_leimonis.md` |
-| 8 | Debugging Performance With AI | Bernie Sumption | 🟢 In person | Drafted — `content/talk_8_bernie_sumption.md` |
+| 1 | The Last Software Engineer | Kent C. Dodds | 🔵 Async | In-deck — Act I, stage 2 |
+| 2 | Skill Design for LLM Agents | Minko Gechev | 🔵 Async | In-deck — Act II, stage 3 |
+| 3 | AI Reviews AI – Closing the Loop in Agentic Development | Daniel Sogl | 🟢 In person | In-deck — Act II, stage 3 (merged with #4) |
+| 4 | Fast Code Generation Is Easy. Safe System-level Change Is Not. | Bart Waardenburg | 🔵 Async | In-deck — Act II, stage 3 (merged with #3) |
+| 5 | Learnings From 100+ Experiments Comparing LLMs for AI Coding | Povilas Korop | 🟢 In person | In-deck — Act II, stage 3 |
+| 6 | From Prompt Engineering to Loop Engineering | Valerii Latsko | 🟢 In person | In-deck — Act III, stage 4 (merged with #7) |
+| 7 | From One Repo to Hundreds: Building an AI Agent Fleet for Large-Scale Code Migrations | Konstantinos Leimonis | 🟢 In person | In-deck — Act III, stage 4 (merged with #6) |
+| 8 | Debugging Performance With AI | Bernie Sumption | 🟢 In person | In-deck — Act IV, stage 5 |
 
 Mode: 🟢 In person (London) · 🔵 Async/remote
 

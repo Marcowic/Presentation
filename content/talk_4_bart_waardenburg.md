@@ -3,7 +3,7 @@ talk_id: 04-bart-waardenburg-fast-code-generation-safe-system-change
 title: Fast Code Generation Is Easy. Safe System-level Change Is Not.
 speaker: Bart Waardenburg
 mode: async
-status: drafted # raw | drafted | in-deck
+status: in-deck # raw | drafted | in-deck
 ---
 
 # Talk details

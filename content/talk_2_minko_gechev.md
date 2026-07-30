@@ -3,7 +3,7 @@ talk_id: 02-minko-gechev-skill-design-for-llm-agents
 title: Skill Design for LLM Agents
 speaker: Minko Gechev
 mode: async
-status: drafted # raw | drafted | in-deck
+status: in-deck # raw | drafted | in-deck
 ---
 
 # Talk details

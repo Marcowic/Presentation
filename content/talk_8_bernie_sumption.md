@@ -3,7 +3,7 @@ talk_id: 08-bernie-sumption-debugging-performance-with-ai
 title: Debugging Performance With AI
 speaker: Bernie Sumption
 mode: in-person # in-person | async
-status: drafted # raw | drafted | in-deck
+status: in-deck # raw | drafted | in-deck
 ---
 
 # Talk details

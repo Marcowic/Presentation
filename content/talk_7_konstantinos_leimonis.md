@@ -3,7 +3,7 @@ talk_id: 07-konstantinos-leimonis-ai-agent-fleet-migrations
 title: "From One Repo to Hundreds: Building an AI Agent Fleet for Large-Scale Code Migrations"
 speaker: Konstantinos Leimonis
 mode: in-person # in-person | async
-status: drafted # raw | drafted | in-deck
+status: in-deck # raw | drafted | in-deck
 ---
 
 # Talk details
